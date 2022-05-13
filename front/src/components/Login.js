@@ -15,8 +15,7 @@ export default function Login() {
   return (
     <div class="espace">
 
-  <Row>
-    <Col span={24}>
+    <h1>LOGIN</h1>
     <Form
       name="basic"
       labelCol={{
@@ -49,29 +48,32 @@ export default function Login() {
         <Input.Password />
       </Form.Item>
 
+      <Row>
+        <Col>
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 8,
+          }}
+        >
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+        </Col>
+        <Col>
       <Form.Item
         wrapperCol={{
-          offset: 8,
-          span: 8,
-        }}
-      >
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-
-      
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 8,
+          offset: 4,
+          span: 16,
         }}
       >
         If you don't have a account? <Link to="/register">Register</Link>
       </Form.Item>
+        </Col>
+      </Row>
+      
     </Form>
-    </Col>
-  </Row>
 
     </div>
   )
