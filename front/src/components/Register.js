@@ -102,7 +102,7 @@ export default function Register() {
             span: 8,
           }}
         >
-          You already have an account ? <Link to="login">Login</Link>
+          You already have an account ? <Link to="/">Login</Link>
         </Form.Item>
       </Form>
     </div>
