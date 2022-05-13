@@ -1,6 +1,5 @@
 import './../styles/App.css';
 import { BrowserRouter,Routes,Route } from "react-router-dom"
-import SideBarNav from "./SideBarNav"
 import Main from "./../containers/Main"
 import Register from "./../components/Register"
 import Login from "./../components/Login"
@@ -10,8 +9,6 @@ function App() {
     <div className="App">
       
       <BrowserRouter>
-
-        <SideBarNav/>
       
         <Routes>
           <Route path="/" element={<Login/>}></Route>
