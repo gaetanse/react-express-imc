@@ -1,7 +1,9 @@
 import { Form,Button,Input,Row,Col } from "antd"
 import "./../styles/Login.css"
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useState,useEffect } from "react"
+import LoginNotOk from "./modals/LoginNotOk"
+import LoginOk from "./modals/LoginOk"
 
 export default function Login() {
 
@@ -16,8 +18,23 @@ export default function Login() {
   const [name,setName] = useState(undefined)
   const [password,setPassword] = useState(undefined)
 
+  const [showNotOk,setShowNotOk] = useState(false)
+  function openShowNotOkClose(){ setShowNotOk(false) }
+
+  const [showOk,setShowOk] = useState(false)
+  function openShowOkClose(){ setShowOk(false) }
+
+  function onValid(e){
+    e.preventDefault()
+    //mettre le code pour le back
+    setShowNotOk(true)
+  }
+
   return (
     <div class="espace">
+
+    <LoginNotOk show={openShowNotOkClose} var={showNotOk}/>
+    <LoginOk show={openShowOkClose} var={showOk}/>
 
     <h1>LOGIN</h1>
     <Form
@@ -60,7 +77,7 @@ export default function Login() {
             span: 8,
           }}
         >
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" onClick={e=>{onValid(e)}}>
             Submit
           </Button>
         </Form.Item>

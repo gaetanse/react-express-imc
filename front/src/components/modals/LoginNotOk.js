@@ -1,27 +1,14 @@
 import { Modal } from "antd"
-import React, { useState } from 'react'
 
-export default function LoginNotOk() {
-  
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  }
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  }
+export default function LoginNotOk(props) {
 
   const handleCancel = () => {
-    setIsModalVisible(false);
+    props.show()
   }
 
   return (
-    <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+    <Modal title="Message" visible={props.var} onOk={handleCancel} onCancel={handleCancel}>
+      <p>Loging fail</p>
     </Modal>
   )
 }

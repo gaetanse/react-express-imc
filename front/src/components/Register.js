@@ -2,6 +2,7 @@ import { Form, Button, Input, Col, Row } from "antd";
 import "./../styles/Register.css";
 import {Link} from "react-router-dom";
 import { useState } from "react";
+const axios = require('axios');
 
 export default function Register() {
 
@@ -19,12 +20,30 @@ const [age,setage] = useState(undefined)
 const [height,setheight] = useState(undefined)
 const [weight,setWeight] = useState(undefined)
 
+  function onValid(e){
+    if(name!=undefined&&password!=undefined&&age!=undefined&&height!=undefined&&weight!=undefined){
+      axios.post('/user', {
+        name: name,
+        password: password,
+        age: age,
+        height: height,
+        weight: weight
+      })
+      .then(function (response) {
+        //if ok
+        //else not ok
+      })
+      .catch(function (error) {
+        //error
+        console.log(error);
+      });
+    }
+  }
 
   return (
     <div>
       
       <h1>REGISTER</h1>
-
 
       <Form
         name="basic"
@@ -115,7 +134,7 @@ const [weight,setWeight] = useState(undefined)
             span: 8,
           }}
         >
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" onClick={e=>onValid(e)}>
             Submit
           </Button>
         </Form.Item>
