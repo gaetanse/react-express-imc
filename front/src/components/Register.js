@@ -1,4 +1,6 @@
 import { Form, Button, Input } from "antd";
+import "./../styles/Register.css";
+import {Link} from "react-router-dom"
 
 export default function Register() {
   return (
@@ -20,12 +22,12 @@ export default function Register() {
         autoComplete="off"
       >
         <Form.Item
-          label="Username"
-          name="username"
+          label="Name"
+          name="name"
           rules={[
             {
               required: true,
-              message: "Please input your username!",
+              message: "Please input your Name!",
             },
           ]}
         >
@@ -87,12 +89,20 @@ export default function Register() {
         <Form.Item
           wrapperCol={{
             offset: 8,
-            span: 16,
+            span: 8,
           }}
         >
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
+        </Form.Item>
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 8,
+          }}
+        >
+          You already have an account ? <Link to="login">Login</Link>
         </Form.Item>
       </Form>
     </div>
