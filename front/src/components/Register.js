@@ -1,4 +1,4 @@
-import { Form, Button, Input } from "antd";
+import { Form, Button, Input, Col, Row } from "antd";
 import "./../styles/Register.css";
 import {Link} from "react-router-dom"
 
@@ -14,7 +14,10 @@ export default function Register() {
 
   return (
     <div>
-      {" "}
+      
+      <h1>REGISTER</h1>
+
+
       <Form
         name="basic"
         labelCol={{
@@ -95,7 +98,10 @@ export default function Register() {
           <Input />
         </Form.Item>
 
-        <Form.Item
+        <Row>
+
+          <Col>
+          <Form.Item
           wrapperCol={{
             offset: 8,
             span: 8,
@@ -105,14 +111,19 @@ export default function Register() {
             Submit
           </Button>
         </Form.Item>
-        <Form.Item
+          </Col>
+          <Col><Form.Item
           wrapperCol={{
             offset: 8,
             span: 8,
           }}
         >
           You already have an account ? <Link to="/">Login</Link>
-        </Form.Item>
+        </Form.Item></Col>
+        </Row>
+
+        
+        
       </Form>
     </div>
   );
