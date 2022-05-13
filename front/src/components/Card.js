@@ -1,5 +1,12 @@
-export default function Card() {
+import { Card } from 'antd';
+export default function CardIMC() {
   return (
-    <div>Card</div>
-  )
-}
+    <>
+    <Card title="IMC" extra={<a href="#">IMC</a>} style={{ width: 300 }}>
+      <small>Indice</small>
+      <p>Date</p>
+      <p>Card content</p>
+      <p>Conseil Santé</p>
+    </Card>
+  </>
+)}
