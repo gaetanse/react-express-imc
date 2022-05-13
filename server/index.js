@@ -1,4 +1,5 @@
 import express from "express"
+import data from "./data/user.json"
 
 const app = express()
 
@@ -10,14 +11,11 @@ app.post('/produits', (req, res) => {
     res.json({message: "produit ajouté"})*/
 })
 
-app.get('/produits/:id', (req, res) => {
-    /*const product = productService.getProductById(req.params.id)
-    if(product != undefined) {
-        res.json(product)
-    }
-    else {
-        res.json({message: "aucun produit avec cet id"})
-    }*/
+app.get('/users', (req, res) => {
+    data.map((e,i)=>{
+        res.json({message: "user found"})
+    })
+    res.json({message: "none user found"})
 })
 
 app.listen(666,() => {

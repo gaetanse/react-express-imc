@@ -1,6 +1,7 @@
 import { Form,Button,Input,Row,Col } from "antd"
 import "./../styles/Login.css"
 import { Link } from "react-router-dom"
+import { useState } from "react"
 
 export default function Login() {
 
@@ -11,6 +12,9 @@ export default function Login() {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   }
+
+  const [name,setName] = useState(undefined)
+  const [password,setPassword] = useState(undefined)
 
   return (
     <div class="espace">
