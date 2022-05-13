@@ -114,8 +114,8 @@ export default function Register() {
           </Col>
           <Col><Form.Item
           wrapperCol={{
-            offset: 8,
-            span: 8,
+            offset: 4,
+            span: 16,
           }}
         >
           You already have an account ? <Link to="/">Login</Link>
