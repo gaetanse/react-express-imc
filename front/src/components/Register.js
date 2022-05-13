@@ -1,6 +1,7 @@
 import { Form, Button, Input, Col, Row } from "antd";
 import "./../styles/Register.css";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import { useState } from "react";
 
 export default function Register() {
 
@@ -11,6 +12,13 @@ export default function Register() {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   }
+
+const [name,setName] = useState(undefined)
+const [password,setPassword] = useState(undefined)
+const [age,setage] = useState(undefined)
+const [height,setheight] = useState(undefined)
+const [weight,setWeight] = useState(undefined)
+
 
   return (
     <div>
