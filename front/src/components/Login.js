@@ -1,6 +1,15 @@
 import { Form,Button,Input } from "antd"
 
 export default function Login() {
+
+  const onFinish = (values) => {
+    console.log('Success:', values);
+  }
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  }
+
   return (
     <div>
 
@@ -43,17 +52,6 @@ export default function Login() {
         ]}
       >
         <Input.Password />
-      </Form.Item>
-
-      <Form.Item
-        name="remember"
-        valuePropName="checked"
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        <Checkbox>Remember me</Checkbox>
       </Form.Item>
 
       <Form.Item
