@@ -1,4 +1,6 @@
-import { Form,Button,Input } from "antd"
+import { Form,Button,Input,Row,Col } from "antd"
+import "./../styles/Login.css"
+import { Link } from "react-router-dom"
 
 export default function Login() {
 
@@ -11,34 +13,27 @@ export default function Login() {
   }
 
   return (
-    <div>
+    <div class="espace">
 
+  <Row>
+    <Col span={24}>
     <Form
       name="basic"
       labelCol={{
         span: 8,
       }}
       wrapperCol={{
-        span: 16,
-      }}
-      initialValues={{
-        remember: true,
+        span: 8,
       }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
       <Form.Item
-        label="Username"
-        name="username"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your username!',
-          },
-        ]}
-      >
-        <Input />
+        label="Name"
+        name="name"
+        rules={[{required: true,message: 'Please input your name!',},]}
+      ><Input />
       </Form.Item>
 
       <Form.Item
@@ -57,14 +52,26 @@ export default function Login() {
       <Form.Item
         wrapperCol={{
           offset: 8,
-          span: 16,
+          span: 8,
         }}
       >
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
       </Form.Item>
+
+      
+      <Form.Item
+        wrapperCol={{
+          offset: 8,
+          span: 8,
+        }}
+      >
+        If you don't have a account? <Link to="/register">Register</Link>
+      </Form.Item>
     </Form>
+    </Col>
+  </Row>
 
     </div>
   )
