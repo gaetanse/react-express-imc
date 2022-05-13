@@ -3,6 +3,15 @@ import "./../styles/Register.css";
 import {Link} from "react-router-dom"
 
 export default function Register() {
+
+  const onFinish = (values) => {
+    console.log('Success:', values);
+  }
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  }
+
   return (
     <div>
       {" "}
