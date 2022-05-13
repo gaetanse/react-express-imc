@@ -21,7 +21,7 @@ export default function Register() {
           span: 8,
         }}
         wrapperCol={{
-          span: 16,
+          span: 8,
         }}
         initialValues={{
           remember: true,
@@ -57,7 +57,7 @@ export default function Register() {
         </Form.Item>
 
         <Form.Item
-          label="age"
+          label="Age"
           name="age"
           rules={[
             {
@@ -80,7 +80,7 @@ export default function Register() {
           ]}
         >
           <Input />
-        </Form.Item> weight
+        </Form.Item>
 
         <Form.Item
           label="Weight"
