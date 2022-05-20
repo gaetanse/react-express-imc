@@ -2,9 +2,13 @@ import { Form, Button, Input, Col, Row } from "antd";
 import "./../styles/Register.css";
 import {Link} from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"
+
 const axios = require('axios');
 
 export default function Register() {
+
+  const navigate = useNavigate();
 
   const onFinish = (values) => {
     console.log('Success:', values);
@@ -22,10 +26,7 @@ const [weight,setWeight] = useState(undefined)
 
   function onValid(e){
     e.preventDefault()
-    console.log("go to axios qzdqz")
-    console.log(name)
     if(name!=undefined&&password!=undefined&&age!=undefined&&height!=undefined&&weight!=undefined){
-      console.log("go to axios in")
       axios.post('http://localhost:666/user', {
         name: name,
         password: password,
@@ -34,7 +35,12 @@ const [weight,setWeight] = useState(undefined)
         weight: weight
       })
       .then(function (response) {
-        console.log(response)
+        if(response.data.message === "ok - the user is add in server"){
+          navigate("/main")
+        }
+        else{
+          console.log("error / can't add user")
+        }
       })
       .catch(function (error) { console.log(error) });
     }
