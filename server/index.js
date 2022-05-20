@@ -5,6 +5,7 @@ import fs from "fs"
 const app = express()
 
 const fileUsers = "data/user.json"
+const fileImcs = "data/imc.json"
 
 app.use(express.json())
 app.use(cors({origin:"*"}))
@@ -15,9 +16,18 @@ function getUsers(){
         fs.readFile(fileUsers, (err, data) => {
             if (err) throw err;
             let users = JSON.parse(data)
-            //console.log(users)
-            //return users
             resolve(users)
+        });
+    });
+}
+
+//get all imcs
+function getImcs(){
+    return new Promise(resolve => {
+        fs.readFile(fileImcs, (err, data) => {
+            if (err) throw err;
+            let imcs = JSON.parse(data)
+            resolve(imcs)
         });
     });
 }
@@ -25,11 +35,13 @@ function getUsers(){
 //get a user
 async function getUser(id){
     const users = await getUsers()
-    for(let i=0;i<users.length;++i){
-        if(id == users[i].id){
-            return users[i]
+    return new Promise(resolve => {
+        for(let i=0;i<users.length;++i){
+            if(id == users[i].id){
+                resolve(users[i])
+            }
         }
-    }
+    });
 }
 
 //add a user
@@ -56,6 +68,29 @@ async function addUser(name, password, age, height, weight){
     });
 }
 
+//add a imc
+async function addImc(imc, id, weight, date, numero){
+
+    const allData = await getImcs()
+    const data = {
+        "imc": imc,
+        "id": id,
+        "weight": weight,
+        "date": date,
+        "numero": numero
+    }
+    allData.push(data)
+
+    return new Promise(resolve => {
+        fs.writeFile(fileImcs, JSON.stringify(allData), (err) => {
+            if (err){
+                resolve(-1)
+            }
+            resolve(1)
+        })
+    });
+}
+
 //route for add user
 app.post('/addUser', async (req, res) => {
        const {name, password, age, height, weight} = req.body
@@ -72,17 +107,42 @@ app.post('/addUser', async (req, res) => {
 //route for add user
 app.post('/addImc', async (req, res) => {
        const {weight, todayDate, id} = req.body
+       console.log(weight)
+       console.log(todayDate)
+       console.log(id)
        const user = await getUser(id)
+       console.log(user)
        const imc = weight/(user.height*user.height)
        console.log(imc)
-       /*const error = await addUser(name, password, age, height, weight)
+
+        let numero = 0
+
+        if(imc=>0 && imc<=12){
+            numero = 0
+        }
+        else if(imc=>12 && imc<=24){
+            numero = 1
+        }
+        else if(imc=>24 && imc<=36){
+            numero = 2
+        }
+        else if(imc=>48 && imc<=60){
+            numero = 3
+        }
+        else if(imc=>60 && imc<=72){
+            numero = 4
+        }
+
+       const error = await addImc(imc,id,weight,todayDate,numero)
        if(error === 1){
-        const allData = await getUsers()
-        res.json({message: "ok - the user is add in server",id:allData.length})
+        res.json({message: "ok - the user is add in server"})
        }
        else{
         res.json({message: "error - the user is not add in server"})
-       }*/
+       }
+       
+        const allData = await getImcs()
+        console.log(allData)
 })
 
 //route for login test
