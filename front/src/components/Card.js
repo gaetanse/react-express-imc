@@ -1,4 +1,9 @@
 import { Card } from 'antd';
+import {
+  UserOutlined,
+  CheckSquareOutlined,
+  BarChartOutlined } from '@ant-design/icons';
+
 export default function CardIMC() {
   return (
     <>
