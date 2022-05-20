@@ -5,6 +5,8 @@ import { useState,useEffect } from "react"
 import LoginNotOk from "./modals/LoginNotOk"
 import LoginOk from "./modals/LoginOk"
 
+const axios = require('axios');
+
 export default function Login() {
 
   const onFinish = (values) => {
@@ -26,8 +28,24 @@ export default function Login() {
 
   function onValid(e){
     e.preventDefault()
-    //mettre le code pour le back
-    setShowNotOk(true)
+    if(name!=undefined&&password!=undefined){
+      axios.post('http://localhost:666/getUsers', {
+        name: name,
+        password: password
+      })
+      .then(function (response) {
+        if(response.data.message === "user found"){
+          localStorage.setItem('id', response.data.id)
+          console.log(response.data.id)
+          setShowOk(true)
+        }
+        else{
+          console.log("user not found")
+          setShowNotOk(true)
+        }
+      })
+      .catch(function (error) { console.log(error) });
+    }
   }
 
   return (
@@ -53,7 +71,7 @@ export default function Login() {
         label="Name"
         name="name"
         rules={[{required: true,message: 'Please input your name!',},]}
-      ><Input />
+      ><Input value={name} onChange={(e)=>setName(e.target.value)}/>
       </Form.Item>
 
       <Form.Item
@@ -66,7 +84,7 @@ export default function Login() {
           },
         ]}
       >
-        <Input.Password />
+        <Input.Password value={password} onChange={(e)=>setPassword(e.target.value)}/>
       </Form.Item>
 
       <Row>

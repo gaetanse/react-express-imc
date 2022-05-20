@@ -27,7 +27,7 @@ const [weight,setWeight] = useState(undefined)
   function onValid(e){
     e.preventDefault()
     if(name!=undefined&&password!=undefined&&age!=undefined&&height!=undefined&&weight!=undefined){
-      axios.post('http://localhost:666/user', {
+      axios.post('http://localhost:666/addUser', {
         name: name,
         password: password,
         age: age,
@@ -36,6 +36,7 @@ const [weight,setWeight] = useState(undefined)
       })
       .then(function (response) {
         if(response.data.message === "ok - the user is add in server"){
+          localStorage.setItem('id', response.data.id)
           navigate("/main")
         }
         else{
