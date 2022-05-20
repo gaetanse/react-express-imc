@@ -1,18 +1,1 @@
-[
-    {
-        "id":0,
-        "name": "gaetan" ,
-        "password": "admin",
-        "age": 24,
-        "height": 1.63,
-        "weight": 53
-    },
-    {
-        "id":1,
-        "name": "yannick" ,
-        "password": "banane",
-        "age": 90,
-        "height": 2,
-        "weight": 180
-    }
-]
+{"name":"test","password":"qdqzdqzdq","age":"28","height":"2828","weight":"121212"}
