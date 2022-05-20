@@ -35,17 +35,8 @@ const [weight,setWeight] = useState(undefined)
       })
       .then(function (response) {
         console.log(response)
-        if(response.message){
-          //go vers /main
-        }
-        else{
-          //erreur d'ajout
-        }
       })
-      .catch(function (error) {
-        //error
-        console.log(error);
-      });
+      .catch(function (error) { console.log(error) });
     }
   }
 

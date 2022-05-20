@@ -26,7 +26,6 @@ function getUsers(){
 async function addUser(name, password, age, height, weight){
 
     const allData = await getUsers()
-
     const data = {
         "id": allData.length,
         "name": name,
@@ -35,31 +34,27 @@ async function addUser(name, password, age, height, weight){
         "height": height,
         "weight": weight
     }
-
     allData.push(data)
 
-    console.log(data)
-    fs.writeFile(fileUsers, JSON.stringify(allData), (err) => {
-        if (err) throw err;
-        //console.log('Data written to file');
-    });
-    //console.log(getUsers())
-}
-
-//get size of users
-function getSizeUsers(){
-    fs.readFile(fileUsers, (err, data) => {
-        if (err) throw err;
-        let users = JSON.parse(data)
-        //console.log(users)
-        return users.length
+    return new Promise(resolve => {
+        fs.writeFile(fileUsers, JSON.stringify(allData), (err) => {
+            if (err){
+                resolve(-1)
+            }
+            resolve(1)
+        })
     });
 }
 
-app.post('/user', (req, res) => {
+app.post('/user', async (req, res) => {
        const {name, password, age, height, weight} = req.body
-       addUser(name, password, age, height, weight)
-       res.json({message: true})
+       const error = await addUser(name, password, age, height, weight)
+       if(error === 1){
+        res.json({message: "ok - the user is add in server"})
+       }
+       else{
+        res.json({message: "error - the user is not add in server"})
+       }
 })
 
 app.get('/users', (req, res) => {
