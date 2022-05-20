@@ -117,19 +117,21 @@ app.post('/addImc', async (req, res) => {
 
         let numero = 0
 
-        if(imc=>0 && imc<=12){
+        console.log(imc)
+
+        if(imc<=12){
             numero = 0
         }
-        else if(imc=>12 && imc<=24){
+        else if(imc>12 && imc<=24){
             numero = 1
         }
-        else if(imc=>24 && imc<=36){
+        else if(imc>24 && imc<=36){
             numero = 2
         }
-        else if(imc=>48 && imc<=60){
+        else if(imc>36 && imc<=48){
             numero = 3
         }
-        else if(imc=>60 && imc<=72){
+        else if(imc>48){
             numero = 4
         }
 
@@ -158,6 +160,26 @@ app.post('/getUsers', async (req, res) => {
     })
     if(!isLogin){
         res.json({message: "none user found"})
+    }
+})
+
+//route for imcs by id
+app.post('/getImcs', async (req, res) => {
+    const imcsToSend = []
+    let isFound = false
+    const {id} = req.body
+    const allData = await getImcs()
+    allData.map((e)=>{
+        if(id === e.id){
+            imcsToSend.push(e)
+            isFound = true
+        }
+    })
+    if(!isFound){
+        res.json({message: "none imc found"})
+    }
+    else{
+        res.json({message: "imc found",imcs:imcsToSend})
     }
 })
 
