@@ -16,13 +16,17 @@ export default function Register() {
 
 const [name,setName] = useState(undefined)
 const [password,setPassword] = useState(undefined)
-const [age,setage] = useState(undefined)
-const [height,setheight] = useState(undefined)
+const [age,setAge] = useState(undefined)
+const [height,setHeight] = useState(undefined)
 const [weight,setWeight] = useState(undefined)
 
   function onValid(e){
+    e.preventDefault()
+    console.log("go to axios qzdqz")
+    console.log(name)
     if(name!=undefined&&password!=undefined&&age!=undefined&&height!=undefined&&weight!=undefined){
-      axios.post('/user', {
+      console.log("go to axios in")
+      axios.post('http://localhost:666/user', {
         name: name,
         password: password,
         age: age,
@@ -30,8 +34,13 @@ const [weight,setWeight] = useState(undefined)
         weight: weight
       })
       .then(function (response) {
-        //if ok
-        //else not ok
+        console.log(response)
+        if(response.message){
+          //go vers /main
+        }
+        else{
+          //erreur d'ajout
+        }
       })
       .catch(function (error) {
         //error
@@ -70,7 +79,7 @@ const [weight,setWeight] = useState(undefined)
             },
           ]}
         >
-          <Input />
+          <Input value={name} onChange={(e)=>setName(e.target.value)}/>
         </Form.Item>
 
         <Form.Item
@@ -83,7 +92,7 @@ const [weight,setWeight] = useState(undefined)
             },
           ]}
         >
-          <Input.Password />
+          <Input.Password value={password} onChange={(e)=>setPassword(e.target.value)}/>
         </Form.Item>
 
         <Form.Item
@@ -96,7 +105,7 @@ const [weight,setWeight] = useState(undefined)
             },
           ]}
         >
-          <Input />
+          <Input value={age} onChange={(e)=>setAge(e.target.value)}/>
         </Form.Item>
 
         <Form.Item
@@ -109,7 +118,7 @@ const [weight,setWeight] = useState(undefined)
             },
           ]}
         >
-          <Input />
+          <Input value={height} onChange={(e)=>setHeight(e.target.value)}/>
         </Form.Item>
 
         <Form.Item
@@ -122,7 +131,7 @@ const [weight,setWeight] = useState(undefined)
             },
           ]}
         >
-          <Input />
+          <Input value={weight} onChange={(e)=>setWeight(e.target.value)}/>
         </Form.Item>
 
         <Row>
@@ -134,7 +143,7 @@ const [weight,setWeight] = useState(undefined)
             span: 8,
           }}
         >
-          <Button type="primary" htmlType="submit" onClick={e=>onValid(e)}>
+          <Button type="primary" htmlType="submit" onClick={e=>{onValid(e)}}>
             Submit
           </Button>
         </Form.Item>

@@ -11,29 +11,37 @@ app.use(cors({origin:"*"}))
 
 //get all users
 function getUsers(){
-    fs.readFile(fileUsers, (err, data) => {
-        if (err) throw err;
-        let users = JSON.parse(data)
-        console.log(users)
-        return users
+    return new Promise(resolve => {
+        fs.readFile(fileUsers, (err, data) => {
+            if (err) throw err;
+            let users = JSON.parse(data)
+            console.log(users)
+            //return users
+            resolve(users)
+        });
     });
 }
 
 //add a user
-function addUser(name, password, age, height, weight){
-    //console.log(getUsers())
+async function addUser(name, password, age, height, weight){
+
+    const allData = await getUsers()
+
     const data = {
-        "id": getSizeUsers(),
+        "id": allData.length,
         "name": name,
         "password": password,
         "age": age,
         "height": height,
         "weight": weight
     }
+
+    allData.push(data)
+
     console.log(data)
-    fs.writeFile(fileUsers, JSON.stringify(data), (err) => {
+    fs.writeFile(fileUsers, JSON.stringify(allData), (err) => {
         if (err) throw err;
-        console.log('Data written to file');
+        //console.log('Data written to file');
     });
     //console.log(getUsers())
 }
