@@ -8,6 +8,11 @@ export default function CardIMC() {
       <p>Date</p>
       <p>Card content</p>
       <p>Conseil Santé</p>
+
+      <UserOutlined />
+      <CheckSquareOutlined />
+      <BarChartOutlined />
+
     </Card>
   </>
 )}
