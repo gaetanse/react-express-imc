@@ -31,7 +31,7 @@ function App() {
       }
     })
     .catch(function (error) { console.log(error) });
-  });
+  },[]);
 
   return (
     <div className="App">

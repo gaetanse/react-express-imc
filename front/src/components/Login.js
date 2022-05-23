@@ -49,12 +49,12 @@ export default function Login() {
   }
 
   return (
-    <div class="espace" style={{marginTop:"15%", border: "1px solid black", width: "50%", marginLeft: "25%"}}>
+    <div class="espace" style={{marginTop:"15%", border: "1px solid black",borderRadius: "10px",boxShadow: "0 0 5px rgba(0, 0, 0, 0.9)", width: "50%", marginLeft: "25%"}}>
 
     <LoginNotOk show={openShowNotOkClose} var={showNotOk}/>
     <LoginOk show={openShowOkClose} var={showOk}/>
 
-    <h1>LOGIN</h1>
+    <h1 style={{textAlign: "left",fontSize: "70px",marginLeft: "5%"}}>LOGIN</h1>
     <Form
       name="basic"
       labelCol={{

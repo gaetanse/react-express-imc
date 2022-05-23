@@ -51,7 +51,7 @@ export const DemoPie = () => {
     pieStyle: ({ etat }) => {
       if (etat === 'm') {
         return {
-          fill: 'p(a)https://pricepally.com/products/612977ab868e2.jpg',
+          fill: 'p(a)selri.png',
           size :18,
         };
       }

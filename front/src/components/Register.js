@@ -49,9 +49,9 @@ const [weight,setWeight] = useState(undefined)
   }
 
   return (
-    <div>
+    <div style={{marginTop:"10%", border: "1px solid black",borderRadius: "10px",boxShadow: "0 0 5px rgba(0, 0, 0, 0.9)", width: "50%", marginLeft: "25%"}}>
       
-      <h1>REGISTER</h1>
+      <h1 style={{textAlign: "left",fontSize: "70px",marginLeft: "5%"}}>REGISTER</h1>
 
       <Form
         name="basic"
@@ -108,7 +108,7 @@ const [weight,setWeight] = useState(undefined)
         </Form.Item>
 
         <Form.Item
-          label="Height"
+          label="Height (m)"
           name="height"
           rules={[
             {
@@ -121,7 +121,7 @@ const [weight,setWeight] = useState(undefined)
         </Form.Item>
 
         <Form.Item
-          label="Weight"
+          label="Weight (kg)"
           name="weight"
           rules={[
             {
@@ -133,9 +133,6 @@ const [weight,setWeight] = useState(undefined)
           <Input value={weight} onChange={(e)=>setWeight(e.target.value)}/>
         </Form.Item>
 
-        <Row>
-
-          <Col>
           <Form.Item
           wrapperCol={{
             offset: 8,
@@ -146,18 +143,15 @@ const [weight,setWeight] = useState(undefined)
             Submit
           </Button>
         </Form.Item>
-          </Col>
-          <Col><Form.Item
+          <Form.Item
           wrapperCol={{
             offset: 4,
             span: 16,
           }}
         >
           You already have an account ? <Link to="/">Login</Link>
-        </Form.Item></Col>
-        </Row>
+        </Form.Item>
 
-        
         
       </Form>
     </div>

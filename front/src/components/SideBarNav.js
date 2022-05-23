@@ -30,14 +30,11 @@ export default function SideBarNav(props) {
     })
     .then(function (response) {
       if(response.data.message === "imc found"){
-        console.log("-------------------------------")
-        console.log(response.data.imc)
-        console.log("-------------------------------")
         setImcFound(response.data.imc)
       }
     })
     .catch(function (error) { console.log(error) });
-  });
+  },[]);
 
   return (
     <div id="mySidenav" >
