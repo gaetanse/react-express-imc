@@ -10,21 +10,35 @@ import { Gauge } from '@ant-design/plots';
 
 export const DemoGauge = () => {
   const config = {
-    percent: 0.75,
+    percent: 0.5,
     range: {
-      ticks: [0, 1 / 3, 2 / 3, 1],
-      color: ['#F4664A', '#30BF78', '#F4664A'],
+      width:20,
+      ticks: [0.4, 0.47, 0.62, 0.75, 1],
+
+      color: ["#8587ff", "#006aff", "#1bff17", "#ff85ba", "#ff0d00"]
     },
     indicator: {
       pointer: {
         style: {
-          stroke: '#D0D0D0',
+          stroke: '#ff0d00',
+          
+        
         },
       },
       pin: {
         style: {
-          stroke: '#D0D0D0',
+          stroke: '#ff0d00',
         },
+      },
+    },
+    axis: {
+      label: {
+        formatter(v) {
+          return Number(v) * 40;
+        },
+      },
+      subTickLine: {
+        count: 6,
       },
     },
     statistic: {
@@ -39,4 +53,5 @@ export const DemoGauge = () => {
   return (
     <Gauge {...config}/>
   );
+  
 };
