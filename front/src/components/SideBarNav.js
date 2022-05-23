@@ -1,17 +1,32 @@
 import { BulbOutlined, CoffeeOutlined, UserOutlined, ChromeOutlined, WindowsOutlined, AndroidOutlined, ToolOutlined } from '@ant-design/icons';
 import { Button, Menu } from 'antd'
 import { DemoGauge }  from "./charts/ChartImcNow"
+import { useNavigate } from "react-router-dom"
 
 import './../styles/Menu.css'
 
 export default function SideBarNav(props) {
+
+  const navigate = useNavigate();
+
+  function goToForm(e){
+    e.preventDefault()
+    navigate("/main/form")
+  }
+
+  function goToHome(e){
+    e.preventDefault()
+    localStorage.clear()
+    navigate("/")
+  }
+
   return (
     <div id="mySidenav" >
       <Menu theme={props.theme} mode="inline" className="Menu">
 
       <Menu.Item><h1 style={{fontSize: "25px",color:"white"}}>React IMC</h1></Menu.Item>
         
-      <Menu.Item>NOM</Menu.Item>
+      <Menu.Item><p style={{fontSize: "20px",backgroundColor: "grey",color:"black", borderRadius: "5px", marginTop: "20px"}}>{localStorage.getItem("name")}</p></Menu.Item>
 
       <Menu.Item>Period of entries</Menu.Item>
       
@@ -19,8 +34,8 @@ export default function SideBarNav(props) {
       <Menu.Item className="Timeline"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1664 1792"><path fill="currentColor" d="m1303 964l-512 512q-10 9-23 9t-23-9l-288-288q-9-10-9-23t9-22l46-46q9-9 22-9t23 9l220 220l444-444q10-9 23-9t22 9l46 46q9 9 9 22t-9 23zM128 1664h1408V640H128v1024zM512 448V160q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23v288q0 14 9 23t23 9h64q14 0 23-9t9-23zm768 0V160q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23v288q0 14 9 23t23 9h64q14 0 23-9t9-23zm384-64v1280q0 52-38 90t-90 38H128q-52 0-90-38t-38-90V384q0-52 38-90t90-38h128v-96q0-66 47-113T416 0h64q66 0 113 47t47 113v96h384v-96q0-66 47-113t113-47h64q66 0 113 47t47 113v96h128q52 0 90 38t38 90z"/></svg> Mois</Menu.Item>
       <Menu.Item className="Timeline"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="32" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1664 1792"><path fill="currentColor" d="M1536 256q52 0 90 38t38 90v1280q0 52-38 90t-90 38H128q-52 0-90-38t-38-90V384q0-52 38-90t90-38h128v-96q0-66 47-113T416 0h64q66 0 113 47t47 113v96h384v-96q0-66 47-113t113-47h64q66 0 113 47t47 113v96h128zm-384-96v288q0 14 9 23t23 9h64q14 0 23-9t9-23V160q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23zm-768 0v288q0 14 9 23t23 9h64q14 0 23-9t9-23V160q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23zm1152 1504V640H128v1024h1408zm-640-576h224q14 0 23 9t9 23v64q0 14-9 23t-23 9H896v224q0 14-9 23t-23 9h-64q-14 0-23-9t-9-23v-224H544q-14 0-23-9t-9-23v-64q0-14 9-23t23-9h224V864q0-14 9-23t23-9h64q14 0 23 9t9 23v224z"/></svg> Trimestre</Menu.Item>
 
-      <Menu.Item><Button>Enter weight</Button></Menu.Item>
-      <Menu.Item><Button>Logout</Button></Menu.Item>
+      <Menu.Item><Button style={{width: "125px",textAlign: "center"}} onClick={(e)=>{ goToForm(e) }} type="primary">Enter weight</Button></Menu.Item>
+      <Menu.Item><Button style={{width: "125px",textAlign: "center"}} onClick={(e)=>{ goToHome(e) }} type="primary">Logout</Button></Menu.Item>
 
       <DemoGauge/>
 

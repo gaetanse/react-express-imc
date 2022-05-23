@@ -37,6 +37,7 @@ const [weight,setWeight] = useState(undefined)
       .then(function (response) {
         if(response.data.message === "ok - the user is add in server"){
           localStorage.setItem('id', response.data.id)
+          localStorage.setItem('name', name)
           navigate("/main")
         }
         else{

@@ -3,7 +3,7 @@ import { useState,useEffect } from "react"
 import etatJson from "./../data/etat.json"
 import CardImc from "./../components/Card"
 import FormImc from "../components/FormImc";
-import { Layout,Row } from 'antd'
+import { Layout,Row,Empty  } from 'antd'
 import { BrowserRouter,Routes,Route } from "react-router-dom"
 const axios = require('axios');
 const { Footer, Sider, Content } = Layout
@@ -67,7 +67,15 @@ export default function Main() {
                 return(
                   <CardImc calculWithLast={calculWithLast} etat={etatJson[e.numero].etat} todayDate={e.date} description={etatJson[e.numero].description} color={etatJson[e.numero].color} infos={e}/>
                 )
-              }):<div>Add a imc</div>
+              }):
+              <div>
+                <Empty style={{fontSize: "100px",margin: "15% auto"}}
+                  imageStyle={{
+                    height: 200,
+                  }}
+                />
+                <h1 style={{fontSize: "50px",fontWeight: "bold", margin: "0 auto"}}>You need to add a imc !</h1>
+              </div>
             }
           </Row>
         </div>

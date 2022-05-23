@@ -36,7 +36,7 @@ export default function Login() {
       .then(function (response) {
         if(response.data.message === "user found"){
           localStorage.setItem('id', response.data.id)
-          console.log(response.data.id)
+          localStorage.setItem('name', name)
           setShowOk(true)
         }
         else{
