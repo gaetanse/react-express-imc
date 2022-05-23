@@ -8,25 +8,8 @@ import { BrowserRouter,Routes,Route } from "react-router-dom"
 const axios = require('axios');
 const { Footer, Sider, Content } = Layout
 
-export default function Main() {
+export default function Main(props) {
 
-  const [imcs,setImcs] = useState(undefined)
-  const fileEtat = "data/etat.json"
-
-  useEffect(() => {
-    console.log("qzdqzd")
-    axios.post('http://localhost:666/getImcs', {
-      id: localStorage.getItem('id')
-    })
-    .then(function (response) {
-      if(response.data.message === "imc found"){
-
-        setImcs(response.data.imcs)
-
-      }
-    })
-    .catch(function (error) { console.log(error) });
-  },[]);
 
   const [collapsed,setCollapsed] = useState(false)
 
@@ -53,35 +36,39 @@ export default function Main() {
         }}
       >    
 
-        <div>
-          <Row gutter={16}>
-            {
-              imcs !== undefined ?
-              imcs.map((e,i)=>{
+      {
+        props.htmldiv
+      }
+  {/*
+          <div>
+            <Row gutter={16}>
+              {
+                imcs !== undefined ?
+                imcs.map((e,i)=>{
 
-                let calculWithLast = 0
+                  let calculWithLast = 0
 
-                if(i!=0){
-                  calculWithLast = imcs[i].weight - imcs[i-1].weight
-                }
+                  if(i!=0){
+                    calculWithLast = imcs[i].weight - imcs[i-1].weight
+                  }
 
-                console.log(i)
+                  console.log(i)
 
-                return(
-                  <CardImc calculWithLast={calculWithLast} etat={etatJson[e.numero].etat} todayDate={e.date} description={etatJson[e.numero].description} color={etatJson[e.numero].color} infos={e}/>
-                )
-              }):
-              <div>
-                <Empty style={{fontSize: "100px",margin: "15% auto"}}
-                  imageStyle={{
-                    height: 200,
-                  }}
-                />
-                <h1 style={{fontSize: "50px",fontWeight: "bold", margin: "0 auto"}}>You need to add a imc !</h1>
-              </div>
-            }
-          </Row>
-        </div>
+                  return(
+                    <CardImc calculWithLast={calculWithLast} etat={etatJson[e.numero].etat} todayDate={e.date} description={etatJson[e.numero].description} color={etatJson[e.numero].color} infos={e}/>
+                  )
+                }):
+                <div>
+                  <Empty style={{fontSize: "100px",margin: "15% auto"}}
+                    imageStyle={{
+                      height: 200,
+                    }}
+                  />
+                  <h1 style={{fontSize: "50px",fontWeight: "bold", margin: "0 auto"}}>You need to add a imc !</h1>
+                </div>
+              }
+            </Row>
+            </div>*/}
 
       </Content>
       <Footer

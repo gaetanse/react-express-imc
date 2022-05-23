@@ -59,10 +59,10 @@ export default function FormImc() {
   return (
     <Form
       labelCol={{
-        span: 4,
+        span: 8,
       }}
       wrapperCol={{
-        span: 14,
+        span: 16,
       }}
       layout="horizontal"
       initialValues={{

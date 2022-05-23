@@ -112,19 +112,19 @@ app.post('/addImc', async (req, res) => {
 
         let numero = 0
         
-        if(imc<16){
+        if(imc<18.5){
             numero = 0
         }
-        else if(imc>=16 && imc<=18.5){
+        else if(imc>=18.5 && imc<=25){
             numero = 1
         }
-        else if(imc>18.5&& imc<=25){
+        else if(imc>25&& imc<=30){
             numero = 2
         }
-        else if(imc>25 && imc<=30.5){
+        else if(imc>30 && imc<=35){
             numero = 3
         }
-        else if(imc>30.5){
+        else if(imc>35){
             numero = 4
         }
 
