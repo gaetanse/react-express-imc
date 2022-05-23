@@ -52,27 +52,24 @@ export default function Main() {
         }}
       >    
 
+        <div>
+          <Row gutter={16}>
+            {
+              imcs !== undefined ?
+              imcs.map((e,i)=>{
 
-<div>
-        {
-          imcs !== undefined ?
-          imcs.map((e,i)=>{
+                let calculWithLast = 0
 
-            let calculWithLast = 0
+                if(i!=0){
+                  calculWithLast = imcs[i].weight - imcs[i-1].weight
+                }
 
-            if(i!=0){
-              calculWithLast = imcs[i].weight - imcs[i-1].weight
+                return(
+                  <CardImc calculWithLast={calculWithLast} etat={etatJson[e.numero].etat} todayDate={e.date} description={etatJson[e.numero].description} color={etatJson[e.numero].color} infos={e}/>
+                )
+              }):<div>Add a imc</div>
             }
-
-            return(
-                <Row gutter={16}>
-                  <CardImc calculWithLast={calculWithLast}  etat={etatJson[e.numero].etat} todayDate={e.date} description={etatJson[e.numero].description} color={etatJson[e.numero].color} infos={e}/>
-                </Row>
-            )
-          })
-          :
-          <div>Add a imc</div>
-        }
+          </Row>
         </div>
 
       </Content>
