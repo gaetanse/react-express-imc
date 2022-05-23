@@ -71,12 +71,17 @@ export const DemoGauge = (props) => {
     statistic: {
       content: {
         style: {
-          fontSize: '12px',
+          fontSize: '0px',
           lineHeight: '25px',
         },
       },
     },
   };
+  //Gauge.scale('value', {
+  //  min: 20,
+  //  max: 40,
+  //  tickInterval: 1,
+  //});
   return (
     <Gauge {...config}/>
   );
