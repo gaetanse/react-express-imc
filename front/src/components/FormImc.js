@@ -34,14 +34,20 @@ export default function FormImc() {
 
   function onValid(e){
     e.preventDefault()
+    console.log("----------------------")
+    console.log(todayDate)
+    console.log(weight)
+    console.log(localStorage.getItem('id'))
+    console.log("----------------------")
     if(todayDate!=undefined&&weight!=undefined){
       console.log(todayDate)
       axios.post('http://localhost:666/addImc', {
         weight: weight,
-        todayDate: todayDate,
+        todayDate: todayDate.toDateString(),
         id: localStorage.getItem('id')
       })
       .then(function (response) {
+        console.log(response.data.message)
         if(response.data.message === "ok - the imc is add"){
           console.log("ok / imc add")
           navigate("/main")
@@ -57,12 +63,12 @@ export default function FormImc() {
   const dateFormat = 'YYYY/MM/DD';
 
   return (
-    <Form
+    <Form style={{marginTop: "75%", width: "400px", height: "250px", border: "1px solid black",boxShadow: "0 0 5px rgba(0, 0, 0, 0.9)",borderRadius: "10px", padding: "25px"}}
       labelCol={{
         span: 8,
       }}
       wrapperCol={{
-        span: 8,
+        span: 16,
       }}
       layout="horizontal"
       initialValues={{

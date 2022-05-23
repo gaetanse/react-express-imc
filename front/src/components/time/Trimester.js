@@ -1,9 +1,9 @@
 import { DemoLine }  from "./../charts/ChartTrimester"
 
-export default function Trimester() {
+export default function Trimester(props) {
   return (
     <div>
-      <DemoLine/>
+      <DemoLine style={{width: "800px", margin: "auto auto"}} imcs={props.imcs}/>
     </div>
   )
 }

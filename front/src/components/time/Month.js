@@ -1,9 +1,9 @@
 import { DemoPie } from "./../charts/ChartMonth"
 
-export default function Month() {
+export default function Month(props) {
   return (
     <div>
-      <DemoPie/>
+      <DemoPie imcs={props.imcs}/>
     </div>
   )
 }

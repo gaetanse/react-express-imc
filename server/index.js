@@ -34,13 +34,16 @@ function getImcs(){
 
 //get a user
 async function getUser(id){
+    console.log("test user")
     const users = await getUsers()
+    console.log("get user")
     return new Promise(resolve => {
         for(let i=0;i<users.length;++i){
             if(id == users[i].id){
                 resolve(users[i])
             }
         }
+        console.log(users)
     });
 }
 
@@ -71,6 +74,11 @@ async function addUser(name, password, age, height, weight){
 //add a imc
 async function addImc(imc, id, weight, date, numero){
 
+    console.log("----------------")
+    console.log(id)
+    console.log(imc)
+    console.log("----------------")
+
     const allData = await getImcs()
     const data = {
         "imc": imc,
@@ -97,7 +105,7 @@ app.post('/addUser', async (req, res) => {
        const error = await addUser(name, password, age, height, weight)
        if(error === 1){
         const allData = await getUsers()
-        res.json({message: "ok - the user is add in server",id:allData.length})
+        res.json({message: "ok - the user is add in server",id:allData.length-1})
        }
        else{
         res.json({message: "error - the user is not add in server"})
@@ -106,8 +114,15 @@ app.post('/addUser', async (req, res) => {
 
 //route for add user
 app.post('/addImc', async (req, res) => {
+
        const {weight, todayDate, id} = req.body
+
+       console.log("----------------")
+       console.log(id)
+       console.log("----------------")
+
        const user = await getUser(id)
+       console.log(user)
        const imc = weight/(user.height*user.height)
 
         let numero = 0
@@ -129,6 +144,7 @@ app.post('/addImc', async (req, res) => {
         }
 
        const error = await addImc(imc,id,weight,todayDate,numero)
+       console.log("add imc")
        if(error === 1){
         res.json({message: "ok - the imc is add"})
        }

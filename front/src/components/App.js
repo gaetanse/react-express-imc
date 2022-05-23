@@ -25,9 +25,7 @@ function App() {
     })
     .then(function (response) {
       if(response.data.message === "imc found"){
-
         setImcs(response.data.imcs)
-
       }
     })
     .catch(function (error) { console.log(error) });
@@ -76,13 +74,13 @@ function App() {
 
           <Route path="/main/month" element={
             <Main htmldiv={
-              <Month/>
+              <Month imcs={imcs}/>
             }/>
           }></Route>
 
           <Route path="/main/trimester" element={
             <Main htmldiv={
-              <Trimester/>
+              <Trimester imcs={imcs}/>
             }/>
         }></Route>
 

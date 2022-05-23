@@ -8,7 +8,12 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Pie } from '@ant-design/plots';
 
-export const DemoPie = () => {
+export const DemoPie = (props) => {
+
+  useEffect(() => {
+    console.log(props.imcs)
+  },[]);
+
   const data = [
     {
       etat: 'm',

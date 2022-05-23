@@ -20,12 +20,12 @@ export default function CardIMC(props) {
         )}
       </p>
 
-      <div style={{backgroundColor: props.color,color: "white"}}>
+      <div style={{backgroundColor: props.color,color: "white",padding: "5px"}}>
 
         <Row gutter={[8, 8]}>
-          <Col span={8} ><UserOutlined /></Col>
-          <Col span={8} ><CheckSquareOutlined /></Col>
-          <Col span={8} ><BarChartOutlined style={{fontSize:"50px"}} /></Col>
+          <Col span={8} ><UserOutlined  style={{fontSize:"25px"}}/></Col>
+          <Col span={8} ><CheckSquareOutlined  style={{fontSize:"25px"}}/></Col>
+          <Col span={8} ><BarChartOutlined style={{fontSize:"25px"}} /></Col>
           <Col span={8} > {props.infos.weight} </Col>
           <Col span={8} > {props.etat} </Col>
           <Col span={8} > {props.calculWithLast} </Col>

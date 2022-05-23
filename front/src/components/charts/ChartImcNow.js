@@ -18,8 +18,6 @@ export const DemoGauge = (props) => {
 
   useEffect(() => {
 
-    
-
     setPourcentage(imc/40)
 
     if(imc<18.5){

@@ -40,7 +40,7 @@ export default function SideBarNav(props) {
     <div id="mySidenav" >
       <Menu theme={props.theme} mode="inline" className="Menu">
 
-      <Menu.Item><h1 style={{fontSize: "25px",color:"white"}}>React IMC</h1></Menu.Item>
+      <Menu.Item><Link to="/main"><h1 style={{fontSize: "25px",color:"white"}}>React IMC</h1></Link></Menu.Item>
         
       <Menu.Item><p style={{fontSize: "20px",backgroundColor: "grey",color:"black", borderRadius: "5px", marginTop: "20px"}}>{localStorage.getItem("name")}</p></Menu.Item>
 
