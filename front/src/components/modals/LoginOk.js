@@ -15,7 +15,7 @@ export default function LoginOk(props) {
 
   return (
     <Modal title="Message" visible={props.var} onOk={handleGoToMain} onCancel={handleCancel}>
-      <p>Loging succes</p>
+      <p>Loging success</p>
     </Modal>
   )
 }

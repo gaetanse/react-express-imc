@@ -11,9 +11,12 @@ import {
   TreeSelect,
   Switch,
 } from 'antd';
+import { Navigate, useNavigate } from 'react-router-dom';
 const axios = require('axios');
 
 export default function FormImc() {
+
+  const navigate = useNavigate()
 
   const [componentSize, setComponentSize] = useState('default');
 
@@ -34,8 +37,9 @@ export default function FormImc() {
         id: localStorage.getItem('id')
       })
       .then(function (response) {
-        if(response.data.message === ""){
+        if(response.data.message === "ok - the imc is add"){
           console.log("ok / imc add")
+          navigate("/main")
         }
         else{
           console.log("error / can't add imc")
@@ -74,7 +78,7 @@ export default function FormImc() {
         <DatePicker value={todayDate} onChange={(date)=>setTodayDate(date)}/>
       </Form.Item>
       <Form.Item label="Button">
-        <Button htmlType="submit" onClick={e=>{onValid(e)}}>Submit</Button>
+        <Button htmlType="submit" onClick={e=>{onValid(e)}} type="primary">Submit</Button>
       </Form.Item>
     </Form>
   )

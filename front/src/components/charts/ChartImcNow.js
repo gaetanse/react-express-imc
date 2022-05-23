@@ -7,35 +7,36 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Gauge } from '@ant-design/plots';
+import color from "./../../data/color.json"
 
 export const DemoGauge = (props) => {
 
   const [pourcentage, setPourcentage] = useState(0)
   const [colorNeed, setColorNeed] = useState(undefined)
 
-  const imc = 33
+  const imc = props.imc
 
   useEffect(() => {
 
     setPourcentage(imc/40)
 
     if(imc<16){
-        setColorNeed("#8587ff")
+        setColorNeed(color.veryverylow)
     }
     else if(imc>=16 && imc<=18.5){
-      setColorNeed("#006aff")
+      setColorNeed(color.verylow)
     }
     else if(imc>18.5&& imc<=25){
-      setColorNeed("#1bff17")
+      setColorNeed(color.normal)
     }
     else if(imc>25 && imc<=30.5){
-      setColorNeed("#ff85ba")
+      setColorNeed(color.verybig)
     }
     else if(imc>30.5){
-      setColorNeed("#ff0d00")
+      setColorNeed(color.veryverybig)
     }
 
-  },[]);
+  });
 
   const config = {
     percent: pourcentage,

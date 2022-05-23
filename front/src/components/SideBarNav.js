@@ -2,10 +2,14 @@ import { BulbOutlined, CoffeeOutlined, UserOutlined, ChromeOutlined, WindowsOutl
 import { Button, Menu } from 'antd'
 import { DemoGauge }  from "./charts/ChartImcNow"
 import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from 'react'
 
 import './../styles/Menu.css'
+const axios = require('axios');
 
 export default function SideBarNav(props) {
+
+  const [imcFound, setImcFound] = useState(0)
 
   const navigate = useNavigate();
 
@@ -19,6 +23,20 @@ export default function SideBarNav(props) {
     localStorage.clear()
     navigate("/")
   }
+  useEffect(() => {
+    axios.post('http://localhost:666/getImcLastImc', {
+      id: localStorage.getItem('id')
+    })
+    .then(function (response) {
+      if(response.data.message === "imc found"){
+        console.log("-------------------------------")
+        console.log(response.data.imc)
+        console.log("-------------------------------")
+        setImcFound(response.data.imc)
+      }
+    })
+    .catch(function (error) { console.log(error) });
+  },[]);
 
   return (
     <div id="mySidenav" >
@@ -37,7 +55,7 @@ export default function SideBarNav(props) {
       <Menu.Item><Button style={{width: "125px",textAlign: "center"}} onClick={(e)=>{ goToForm(e) }} type="primary">Enter weight</Button></Menu.Item>
       <Menu.Item><Button style={{width: "125px",textAlign: "center"}} onClick={(e)=>{ goToHome(e) }} type="primary">Logout</Button></Menu.Item>
 
-      <DemoGauge/>
+      <DemoGauge imc={imcFound}/>
 
       </Menu>
   
