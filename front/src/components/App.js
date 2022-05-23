@@ -4,7 +4,8 @@ import Main from "./../containers/Main"
 import FormImc from "./FormImc"
 import Register from "./../components/Register"
 import Login from "./../components/Login"
-//import 'antd/dist/antd.css'
+import Month from "./time/Month"
+import Trimester from "./time/Trimester"
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
           <Route path="/" element={<Login/>}></Route>
           <Route path="/register" element={<Register/>}></Route>
           <Route path="/main/" element={<Main/>}></Route>
+          <Route path="/main/month" element={<Month/>}></Route>
+          <Route path="/main/trimester" element={<Trimester/>}></Route>
           <Route path="/main/form" element={<FormImc/>}></Route>
         </Routes>
       

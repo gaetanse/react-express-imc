@@ -8,7 +8,7 @@ import {
 export default function CardIMC(props) {
   return (
     <Col className="gutter-row" span={8}>
-    <Card >
+    <Card>
       <small>Indice</small>
       <p>{props.infos.imc}</p>
       <p>{props.todayDate}</p>

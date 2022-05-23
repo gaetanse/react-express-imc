@@ -8,7 +8,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Gauge } from '@ant-design/plots';
 
-const DemoGauge = () => {
+export const DemoGauge = () => {
   const config = {
     percent: 0.75,
     range: {
@@ -31,12 +31,12 @@ const DemoGauge = () => {
       content: {
         style: {
           fontSize: '12px',
-          lineHeight: '12px',
+          lineHeight: '25px',
         },
       },
     },
   };
-  return <Gauge {...config} />;
+  return (
+    <Gauge {...config}/>
+  );
 };
-
-ReactDOM.render(<DemoGauge />, document.getElementById('container'));
