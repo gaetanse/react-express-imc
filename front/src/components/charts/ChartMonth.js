@@ -16,7 +16,7 @@ export const DemoPie = () => {
     },
     {
       etat: 'k',
-      sold: 0.15,
+      sold: 0.55,
     },
     {
       etat: 'l',
@@ -57,13 +57,13 @@ export const DemoPie = () => {
       }
       if (etat === 'k') {
         return {
-          fill: 'p(a)https://rukminim1.flixcart.com/image/416/416/jvsf3ww0/emergency-sign/y/h/m/pr-uk-111-signever-original-imafgm4s23e4dcwj.jpeg?q=70',
+          fill: 'p(a)https://media.istockphoto.com/vectors/big-and-little-skulls-seamless-patern-vector-id1184543333?k=20&m=1184543333&s=612x612&w=0&h=2-E41OZ4jp3NZkCYdc6X8RAsOJ5cSf4q-LfjGv5n_5E=',
           size :18,
         };
       }
       if (etat === 'l') {
         return {
-          fill: 'p(a)https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F09.2F16.2F5c953641-67b0-4dd1-a365-5ba785ffa041.2Ejpeg/1200x630/background-color/ffffff/quality/70/cr/wqkgWGFueWE2OSAvIEdldHR5IEltYWdlcyAvIENBUElUQUw%3D/du-pain-et-de-leau-pour-les-deux-enfants-qui-navaient-pas-paye-la-cantine-1350305.jpg',
+          fill: 'p(a)https://gift.kleecks-cdn.com/img/vari%C3%A9t%C3%A9s-d-eau-min%C3%A9rale/vari%C3%A9t%C3%A9s-d-eau-min%C3%A9rale.jpg',
           size :18,
         };
       }

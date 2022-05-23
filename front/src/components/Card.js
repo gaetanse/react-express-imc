@@ -25,7 +25,7 @@ export default function CardIMC(props) {
         <Row gutter={[8, 8]}>
           <Col span={8} ><UserOutlined /></Col>
           <Col span={8} ><CheckSquareOutlined /></Col>
-          <Col span={8} ><BarChartOutlined width="50px" /></Col>
+          <Col span={8} ><BarChartOutlined style={{fontSize:"50px"}} /></Col>
           <Col span={8} > {props.infos.weight} </Col>
           <Col span={8} > {props.etat} </Col>
           <Col span={8} > {props.calculWithLast} </Col>
