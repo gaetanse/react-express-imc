@@ -2,30 +2,30 @@
     "number":0,
     "etat": "Maigreur",
     "description": "Poids trop faible, réserves insuffisantes en cas de maladie",
-    "color": "#66cccc"
+    "color": "#05d2b3"
 },
 {
     "number":1,
     "etat": "Normal",
     "description": "Poids santé ou poids idéal : essayez d'y rester !",
-    "color": "#79d246"  
+    "color": "#2ab909"  
 },
 {
     "number":2,
     "etat": "Surpoids",
     "description": "Il vous est conseillé de maigrir pour atteindre un poids santé",
-    "color": "#ffff00"   
+    "color": "#fdb304"   
 },
 {
     "number":3,
     "etat": "Obésité",
     "description": "Très forte probabilité d'apparition de diabète, de maladies cardiovasculaires...",
-    "color": "#aa2222"   
+    "color": "#fb6809"   
 },
 {
     "number":4,
     "etat": "Obésité morbide",
-    "description": "L'obésité morbide nécessite une prise en charge multidisciplinaire.En premier lieu, il est primordial de consulter un endocrinologue et/ou nutritionniste",
-    "color": "#000000"   
+    "description": "L'obésité morbide nécessite une prise en charge multidisciplinaire. En premier lieu, il est primordial de consulter un endocrinologue et/ou nutritionniste",
+    "color": "#fe1800"   
 }
 ]
