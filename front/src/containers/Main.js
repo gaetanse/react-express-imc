@@ -21,23 +21,7 @@ export default function Main() {
     .then(function (response) {
       if(response.data.message === "imc found"){
 
-        if(response.data.imcs<7){
-          setImcs(response.data.imcs)
-        }
-        else{
-          console.log(response.data.imcs)
-          const array = response.data.imcs
-          array.reverse()
-
-          const newArray = []
-
-          console.log(array)
-          for(let i = 0; i<7; ++i){
-            newArray.push(array[i])
-          }
-          setImcs(newArray)
-          console.log(imcs)
-        }
+        setImcs(response.data.imcs)
 
       }
     })
@@ -80,6 +64,8 @@ export default function Main() {
                 if(i!=0){
                   calculWithLast = imcs[i].weight - imcs[i-1].weight
                 }
+
+                console.log(i)
 
                 return(
                   <CardImc calculWithLast={calculWithLast} etat={etatJson[e.numero].etat} todayDate={e.date} description={etatJson[e.numero].description} color={etatJson[e.numero].color} infos={e}/>
