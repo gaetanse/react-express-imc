@@ -4,10 +4,12 @@
 //  )
 //}
 
-
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Line } from '@ant-design/plots';
+
+
+ 
 
 export const DemoLine = () => {
   const [data, setData] = useState([]);
@@ -33,16 +35,41 @@ export const DemoLine = () => {
       // 低于中位数颜色变化
       {
         type: 'regionFilter',
-        start: ['min', 'median'],
-        end: ['max', '0'],
-        color: '#F4664A',
+        start: ['min', '0'],
+        end: ['max', '500'],
+        color: '#05d2b3',
+      },
+      {
+        type: 'regionFilter',
+        start: ['min', '500'],
+        end: ['max', '1000'],
+        color: '#2ab909',
+      },
+      {
+        type: 'regionFilter',
+        start: ['min', '1000'],
+        end: ['max', '1500'],
+        color: '#fdb304',
+      },
+      {
+        type: 'regionFilter',
+        start: ['min', '1500'],
+        end: ['max', '2000'],
+        color: '#fb6809',
+      },
+      {
+        type: 'regionFilter',
+        start: ['min', '2000'],
+        end: ['max', '2500'],
+        color: '#fe1800',
       },
       {
         type: 'text',
         position: ['min', 'median'],
-        content: '中位数',
+        content: 'Median',
         offsetY: -4,
         style: {
+          lineWidth: 8,
           textBaseline: 'bottom',
         },
       },
@@ -51,7 +78,7 @@ export const DemoLine = () => {
         start: ['min', 'median'],
         end: ['max', 'median'],
         style: {
-          stroke: '#F4664A',
+          lineWidth: 1,
           lineDash: [2, 2],
         },
       },
