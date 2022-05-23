@@ -49,7 +49,7 @@ export default function Login() {
   }
 
   return (
-    <div class="espace">
+    <div class="espace" style={{marginTop:"15%", border: "1px solid black", width: "50%", marginLeft: "25%"}}>
 
     <LoginNotOk show={openShowNotOkClose} var={showNotOk}/>
     <LoginOk show={openShowOkClose} var={showOk}/>
@@ -87,20 +87,16 @@ export default function Login() {
         <Input.Password value={password} onChange={(e)=>setPassword(e.target.value)}/>
       </Form.Item>
 
-      <Row>
-        <Col>
         <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 8,
-          }}
+        wrapperCol={{
+          offset: 4,
+          span: 16,
+        }}
         >
           <Button type="primary" htmlType="submit" onClick={e=>{onValid(e)}}>
             Submit
           </Button>
         </Form.Item>
-        </Col>
-        <Col>
       <Form.Item
         wrapperCol={{
           offset: 4,
@@ -109,8 +105,7 @@ export default function Login() {
       >
         If you don't have a account? <Link to="/register">Register</Link>
       </Form.Item>
-        </Col>
-      </Row>
+
       
     </Form>
 

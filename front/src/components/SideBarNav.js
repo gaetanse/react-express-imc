@@ -37,7 +37,7 @@ export default function SideBarNav(props) {
       }
     })
     .catch(function (error) { console.log(error) });
-  },[]);
+  });
 
   return (
     <div id="mySidenav" >
