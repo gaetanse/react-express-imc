@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Form,
   Input,
@@ -12,6 +12,7 @@ import {
   Switch,
 } from 'antd';
 import { Navigate, useNavigate } from 'react-router-dom';
+import moment from 'moment';
 const axios = require('axios');
 
 export default function FormImc() {
@@ -26,6 +27,10 @@ export default function FormImc() {
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
+
+  useEffect(() => {
+    setTodayDate(new Date())
+  },[]);
 
   function onValid(e){
     e.preventDefault()
@@ -48,6 +53,8 @@ export default function FormImc() {
       .catch(function (error) { console.log(error) });
     }
   }
+
+  const dateFormat = 'YYYY/MM/DD';
 
   return (
     <Form
@@ -75,7 +82,7 @@ export default function FormImc() {
         <Input value={weight} onChange={(e)=>setWeight(e.target.value)}/>
       </Form.Item>
       <Form.Item label="Today date">
-        <DatePicker value={todayDate} onChange={(date)=>setTodayDate(date)}/>
+        <DatePicker defaultValue={moment(new Date(), dateFormat)} onChange={(date)=>setTodayDate(date)}/>
       </Form.Item>
       <Form.Item label="Button">
         <Button htmlType="submit" onClick={e=>{onValid(e)}} type="primary">Submit</Button>

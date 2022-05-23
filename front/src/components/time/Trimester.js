@@ -1,5 +1,9 @@
+import { DemoLine }  from "./../charts/ChartTrimester"
+
 export default function Trimester() {
   return (
-    <div>Trimester</div>
+    <div>
+      <DemoLine/>
+    </div>
   )
 }

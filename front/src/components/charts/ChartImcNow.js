@@ -7,7 +7,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Gauge } from '@ant-design/plots';
-import color from "./../../data/color.json"
+import etat from "./../../data/etat.json"
 
 export const DemoGauge = (props) => {
 
@@ -18,22 +18,24 @@ export const DemoGauge = (props) => {
 
   useEffect(() => {
 
+    
+
     setPourcentage(imc/40)
 
-    if(imc<16){
-        setColorNeed(color.veryverylow)
+    if(imc<18.5){
+        setColorNeed(etat[0].color)
     }
-    else if(imc>=16 && imc<=18.5){
-      setColorNeed(color.verylow)
+    else if(imc>=18.5 && imc<=25){
+      setColorNeed(etat[1].color)
     }
-    else if(imc>18.5&& imc<=25){
-      setColorNeed(color.normal)
+    else if(imc>25&& imc<=30){
+      setColorNeed(etat[2].color)
     }
-    else if(imc>25 && imc<=30.5){
-      setColorNeed(color.verybig)
+    else if(imc>30 && imc<=35){
+      setColorNeed(etat[3].color)
     }
-    else if(imc>30.5){
-      setColorNeed(color.veryverybig)
+    else if(imc>35){
+      setColorNeed(etat[4].color)
     }
 
   });
@@ -42,9 +44,9 @@ export const DemoGauge = (props) => {
     percent: pourcentage,
     range: {
       width:20,
-      ticks: [0.4, 0.47, 0.62, 0.75, 1],
+      ticks: [0.46, 0.62, 0.75, 0.87, 1],
 
-      color: ["#8587ff", "#006aff", "#1bff17", "#ff85ba", "#ff0d00"]
+      color: [etat[0].color, etat[1].color, etat[2].color, etat[3].color, etat[4].color]
     },
     indicator: {
       pointer: {

@@ -20,8 +20,25 @@ export default function Main() {
     })
     .then(function (response) {
       if(response.data.message === "imc found"){
-        setImcs(response.data.imcs)
-        console.log(imcs)
+
+        if(response.data.imcs<7){
+          setImcs(response.data.imcs)
+        }
+        else{
+          console.log(response.data.imcs)
+          const array = response.data.imcs
+          array.reverse()
+
+          const newArray = []
+
+          console.log(array)
+          for(let i = 0; i<7; ++i){
+            newArray.push(array[i])
+          }
+          setImcs(newArray)
+          console.log(imcs)
+        }
+
       }
     })
     .catch(function (error) { console.log(error) });

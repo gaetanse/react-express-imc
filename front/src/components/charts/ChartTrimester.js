@@ -9,7 +9,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Line } from '@ant-design/plots';
 
-const DemoLine = () => {
+export const DemoLine = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -60,5 +60,3 @@ const DemoLine = () => {
 
   return <Line {...config} />;
 };
-
-ReactDOM.render(<DemoLine />, document.getElementById('container'));
