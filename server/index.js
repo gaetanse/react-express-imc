@@ -107,40 +107,33 @@ app.post('/addUser', async (req, res) => {
 //route for add user
 app.post('/addImc', async (req, res) => {
        const {weight, todayDate, id} = req.body
-       console.log(weight)
-       console.log(todayDate)
-       console.log(id)
        const user = await getUser(id)
-       console.log(user)
        const imc = weight/(user.height*user.height)
-       console.log(imc)
 
         let numero = 0
-
-        console.log(imc)
-
-        if(imc<=12){
+        
+        if(imc<16){
             numero = 0
         }
-        else if(imc>12 && imc<=24){
+        else if(imc>=16 && imc<=18.5){
             numero = 1
         }
-        else if(imc>24 && imc<=36){
+        else if(imc>18.5&& imc<=25){
             numero = 2
         }
-        else if(imc>36 && imc<=48){
+        else if(imc>25 && imc<=30.5){
             numero = 3
         }
-        else if(imc>48){
+        else if(imc>30.5){
             numero = 4
         }
 
        const error = await addImc(imc,id,weight,todayDate,numero)
        if(error === 1){
-        res.json({message: "ok - the user is add in server"})
+        res.json({message: "ok - the imc is add"})
        }
        else{
-        res.json({message: "error - the user is not add in server"})
+        res.json({message: "error - the imc is not add"})
        }
        
         const allData = await getImcs()
@@ -180,6 +173,30 @@ app.post('/getImcs', async (req, res) => {
     }
     else{
         res.json({message: "imc found",imcs:imcsToSend})
+    }
+})
+
+//route for last imc by id
+app.post('/getImcLastImc', async (req, res) => {
+    const lastImc = undefined
+    let isFound = false
+    const {id} = req.body
+    const allData = await getImcs()
+
+    const imcsOfUser = []
+
+    allData.map((e)=>{
+        if(id === e.id){
+            imcsOfUser.push(e)
+            isFound = true
+        }
+    })
+
+    if(!isFound){
+        res.json({message: "none imc found"})
+    }
+    else{
+        res.json({message: "imc found",imc:imcsOfUser[imcsOfUser.length-1].imc})
     }
 })
 
