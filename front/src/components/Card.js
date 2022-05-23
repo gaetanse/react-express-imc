@@ -5,7 +5,6 @@ import {
   BarChartOutlined } from '@ant-design/icons';
   import { Progress } from 'antd';
 import "./../styles/Card.css"
-import color from "./"
 
 export default function CardIMC(props) {
 
