@@ -62,7 +62,7 @@ export default function FormImc() {
         span: 8,
       }}
       wrapperCol={{
-        span: 16,
+        span: 8,
       }}
       layout="horizontal"
       initialValues={{

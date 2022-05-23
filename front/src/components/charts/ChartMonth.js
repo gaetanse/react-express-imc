@@ -12,7 +12,7 @@ export const DemoPie = () => {
   const data = [
     {
       etat: 'm',
-      sold: 0.15,
+      sold: 0.95,
     },
     {
       etat: 'k',
@@ -51,7 +51,7 @@ export const DemoPie = () => {
     pieStyle: ({ etat }) => {
       if (etat === 'm') {
         return {
-          fill: 'p(a)selri.png',
+          fill: 'p(a)https://www.irishnews.com/picturesarchive/irishnews/irishnews/2019/04/08/132023636-837d5e87-036c-489c-865a-84c20167b41f.jpg',
           size :18,
         };
       }
@@ -71,13 +71,13 @@ export const DemoPie = () => {
       if (etat === 'o') {
         return {
           fill: 'p(a)https://img-3.journaldesfemmes.fr/HwUgYMFAXpGcR9A7Xrw4oF67Mf4=/1500x/smart/409e102e633d42759746f73e286431a3/ccmcms-jdf/11057068.jpg',
-          size : 6,
+          size : 18,
         };
       }
 
       return {
-        fill: 'p(a)https://www.irishnews.com/picturesarchive/irishnews/irishnews/2019/04/08/132023636-837d5e87-036c-489c-865a-84c20167b41f.jpg',
-        size : 1,
+        fill: 'p(a)https://upload.wikimedia.org/wikipedia/commons/4/44/Salade_laitue_%28SALVINA%291991_Cl_Jean_Weber_%2823594776891%29.jpg',
+        size : 18,
       };
     },
     tooltip: false,
