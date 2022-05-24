@@ -55,25 +55,6 @@ export const DemoLine = (props) => {
         end: ['max', '5000'],
         color: '#fe1800',
       },
-      {
-        type: 'text',
-        position: ['min', 'median'],
-        content: 'Median',
-        offsetY: -4,
-        style: {
-          lineWidth: 8,
-          textBaseline: 'bottom',
-        },
-      },
-      {
-        type: 'line',
-        start: ['min', 'median'],
-        end: ['max', 'median'],
-        style: {
-          lineWidth: 1,
-          lineDash: [2, 2],
-        },
-      },
     ],
   };
 
