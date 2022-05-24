@@ -25,7 +25,6 @@ export const DemoLine = (props) => {
     xField: 'date',
     yField: 'imc',
     annotations: [
-      // 低于中位数颜色变化
       {
         type: 'regionFilter',
         start: ['min', '0'],
@@ -78,5 +77,9 @@ export const DemoLine = (props) => {
     ],
   };
 
-  return <Line {...config} />;
+  return (
+    <div style={{width: "1200px", margin: "20% auto"}}>
+      <Line {...config} />
+    </div>
+    );
 };
