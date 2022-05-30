@@ -19,6 +19,9 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    dispatch({
+      type: "CLEAR"
+    })
     axios.post('http://localhost:666/getImcs', {
       id: localStorage.getItem('id')
     })

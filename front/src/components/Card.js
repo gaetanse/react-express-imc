@@ -5,7 +5,7 @@ import { Progress } from 'antd'
 
 export default function CardIMC(props) {
   return (
-    <Col span={8}>
+    <Col span={6}>
       <Card className="border" style={{margin: "10px 10px", height:"auto", width: "auto"}}>
         <p className="readable bold">IMC</p>
         <p className="big bold">{ parseInt((props.infos.imc)) }</p>

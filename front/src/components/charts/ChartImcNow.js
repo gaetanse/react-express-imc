@@ -71,6 +71,8 @@ export const DemoGauge = (_props) => {
     },
   }
   return (
-    <Gauge {...config}/>
+    <div style={{padding:"10px"}}>
+      <Gauge {...config}/>
+    </div>
   )
 }
