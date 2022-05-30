@@ -6,16 +6,18 @@ import Register from "./../components/Register"
 import Login from "./../components/Login"
 import Month from "./time/Month"
 import Trimester from "./time/Trimester"
-import SideBarNav from "./../components/SideBarNav"
-import { useState,useEffect } from "react"
+import { useEffect } from "react"
 import etatJson from "./../data/etat.json"
 import CardImc from "./../components/Card"
-import { Layout,Row,Empty  } from 'antd'
+import { Row,Empty  } from 'antd'
+import { useDispatch, useSelector } from "react-redux"
 const axios = require('axios');
 
 function App() {
 
-  const [imcs,setImcs] = useState(undefined)
+  const dispatch = useDispatch()
+  const imcs = useSelector(state=>state.imcs)
+
   const fileEtat = "data/etat.json"
 
   useEffect(() => {
@@ -25,7 +27,12 @@ function App() {
     })
     .then(function (response) {
       if(response.data.message === "imc found"){
-        setImcs(response.data.imcs)
+        response.data.imcs.map((e)=>{
+          dispatch({
+            type: "ADD-IMC",
+            payload: e
+          })
+        })
       }
     })
     .catch(function (error) { console.log(error) });
@@ -41,46 +48,37 @@ function App() {
           <Route path="/register" element={<Register/>}></Route>
 
           <Route path="/main/" element={<Main htmldiv={
-            <div>
-            <Row gutter={16}>
+            <div className="site-card-wrapper">
+              <Row gutter={8}>
               {
                 imcs !== undefined ?
                 imcs.map((e,i)=>{
-  
                   let calculWithLast = 0
-  
                   if(i!=0){
                     calculWithLast = imcs[i].weight - imcs[i-1].weight
                   }
-  
-                  console.log(i)
-  
                   return(
                     <CardImc calculWithLast={calculWithLast} etat={etatJson[e.numero].etat} todayDate={e.date} description={etatJson[e.numero].description} color={etatJson[e.numero].color} infos={e}/>
                   )
                 }):
                 <div>
-                  <Empty style={{fontSize: "100px",margin: "15% auto"}}
-                    imageStyle={{
-                      height: 200,
-                    }}
-                  />
+                  <Empty style={{fontSize: "100px",margin: "15% auto"}} imageStyle={{ height: 200 }}/>
                   <h1 style={{fontSize: "50px",fontWeight: "bold", margin: "0 auto"}}>You need to add a imc !</h1>
                 </div>
               }
-            </Row>
-          </div>
+              </Row>
+            </div>
           }/>}></Route>
 
           <Route path="/main/month" element={
             <Main htmldiv={
-              <Month imcs={imcs}/>
+              <Month/>
             }/>
           }></Route>
 
           <Route path="/main/trimester" element={
             <Main htmldiv={
-              <Trimester imcs={imcs}/>
+              <Trimester/>
             }/>
         }></Route>
 

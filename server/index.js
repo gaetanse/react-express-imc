@@ -146,14 +146,13 @@ app.post('/addImc', async (req, res) => {
        const error = await addImc(imc,id,weight,todayDate,numero)
        console.log("add imc")
        if(error === 1){
-        res.json({message: "ok - the imc is add"})
+        const allData = await getImcs()
+        res.json({message: "ok - the imc is add",imc:allData[allData.length-1]})
        }
        else{
         res.json({message: "error - the imc is not add"})
        }
        
-        const allData = await getImcs()
-        console.log(allData)
 })
 
 //route for login test

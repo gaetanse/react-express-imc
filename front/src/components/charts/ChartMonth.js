@@ -7,6 +7,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Pie } from '@ant-design/plots';
+import { useDispatch, useSelector } from "react-redux"
 
 export const DemoPie = (props) => {
   
@@ -20,30 +21,31 @@ export const DemoPie = (props) => {
 
   const [configInfos,setConfigInfos] = useState(undefined)
   
+  const imcs = useSelector(state=>state.imcs)
 
   useEffect(() => {
     console.log(props.imcs)
 
     console.log("--------------------------------------------------------")
-    for(let i=0; i<props.imcs.length; ++i){
+    for(let i=0; i<imcs.length; ++i){
       //console.log(props.imcs[i].numero)
-      if(props.imcs[i].numero==0){
+      if(imcs[i].numero==0){
         console.log("0")
         setCompteur0(compteur0+1)
       }
-      else if(props.imcs[i].numero==1){
+      else if(imcs[i].numero==1){
         console.log("1")
         setCompteur1(compteur1+1)
       }
-      else if(props.imcs[i].numero==2){
+      else if(imcs[i].numero==2){
         console.log("2")
         setCompteur2(compteur2+1)
       }
-      else if(props.imcs[i].numero==3){
+      else if(imcs[i].numero==3){
         console.log("3")
         setCompteur3(compteur3+1)
       }
-      else if(props.imcs[i].numero==4){
+      else if(imcs[i].numero==4){
         console.log("4")
         setCompteur4(compteur4+1)
       }
@@ -57,7 +59,7 @@ export const DemoPie = (props) => {
     //setCreate(true)
 
 
-  },[]);
+  },[imcs]);
 
   const data = [
     {

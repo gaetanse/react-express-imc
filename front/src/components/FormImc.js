@@ -13,9 +13,12 @@ import {
 } from 'antd';
 import { Navigate, useNavigate } from 'react-router-dom';
 import moment from 'moment';
+import { useDispatch, useSelector } from "react-redux"
 const axios = require('axios');
 
 export default function FormImc() {
+  
+  const dispatch = useDispatch()
 
   const navigate = useNavigate()
 
@@ -43,13 +46,17 @@ export default function FormImc() {
       console.log(todayDate)
       axios.post('http://localhost:666/addImc', {
         weight: weight,
-        todayDate: todayDate.toDateString(),
+        todayDate: todayDate.toString(),
         id: localStorage.getItem('id')
       })
       .then(function (response) {
         console.log(response.data.message)
         if(response.data.message === "ok - the imc is add"){
           console.log("ok / imc add")
+          dispatch({
+            type: "ADD-IMC",
+            payload: response.data.imc
+          })
           navigate("/main")
         }
         else{

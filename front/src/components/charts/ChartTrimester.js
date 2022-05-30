@@ -8,16 +8,18 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Line } from '@ant-design/plots';
 
+import { useDispatch, useSelector } from "react-redux"
 
  
 
 export const DemoLine = (props) => {
   const [data, setData] = useState([]);
+  const imcs = useSelector(state=>state.imcs)
 
   useEffect(() => {
     console.log(props.imcs)
-    setData(props.imcs)
-  }, []);
+    setData(imcs)
+  }, [imcs]);
 
   const config = {
     data,

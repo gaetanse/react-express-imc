@@ -6,11 +6,15 @@ import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
 
 import './../styles/Menu.css'
+import { useDispatch, useSelector } from "react-redux"
 const axios = require('axios');
 
 export default function SideBarNav(props) {
 
+  const dispatch = useDispatch()
+  
   const [imcFound, setImcFound] = useState(0)
+  const imcs = useSelector(state=>state.imcs)
 
   const navigate = useNavigate();
 
@@ -22,10 +26,13 @@ export default function SideBarNav(props) {
   function goToHome(e){
     e.preventDefault()
     localStorage.clear()
+    dispatch({
+      type: "CLEAR"
+    })
     navigate("/")
   }
-  useEffect(() => {
-    axios.post('http://localhost:666/getImcLastImc', {
+  //useEffect(() => {
+    /*axios.post('http://localhost:666/getImcLastImc', {
       id: localStorage.getItem('id')
     })
     .then(function (response) {
@@ -33,8 +40,9 @@ export default function SideBarNav(props) {
         setImcFound(response.data.imc)
       }
     })
-    .catch(function (error) { console.log(error) });
-  },[]);
+    .catch(function (error) { console.log(error) });*/
+  //  setImcFound(imcs[imcs.length-1].imc)
+  //},[imcs]);
 
   return (
     <div id="mySidenav" >
@@ -65,7 +73,7 @@ export default function SideBarNav(props) {
       <Menu.Item><Button style={{width: "125px",textAlign: "center"}} onClick={(e)=>{ goToForm(e) }} type="primary">Enter weight</Button></Menu.Item>
       <Menu.Item><Button style={{width: "125px",textAlign: "center"}} onClick={(e)=>{ goToHome(e) }} type="primary">Logout</Button></Menu.Item>
 
-      <DemoGauge imc={imcFound}/>
+      <DemoGauge/>
 
       </Menu>
   

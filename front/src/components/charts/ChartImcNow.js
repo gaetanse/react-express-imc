@@ -8,35 +8,43 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Gauge } from '@ant-design/plots';
 import etat from "./../../data/etat.json"
+import { useDispatch, useSelector } from "react-redux"
 
-export const DemoGauge = (props) => {
+export const DemoGauge = (_props) => {
 
   const [pourcentage, setPourcentage] = useState(0)
   const [colorNeed, setColorNeed] = useState(undefined)
-
-  const imc = props.imc
+  
+  const imcs = useSelector(state=>state.imcs)
 
   useEffect(() => {
 
-    setPourcentage(imc/40)
+    console.log(imcs)
 
-    if(imc<18.5){
-        setColorNeed(etat[0].color)
-    }
-    else if(imc>=18.5 && imc<=25){
-      setColorNeed(etat[1].color)
-    }
-    else if(imc>25&& imc<=30){
-      setColorNeed(etat[2].color)
-    }
-    else if(imc>30 && imc<=35){
-      setColorNeed(etat[3].color)
-    }
-    else if(imc>35){
-      setColorNeed(etat[4].color)
+    if(imcs.length!=0){
+
+      let imc = imcs[imcs.length-1].imc
+  
+      setPourcentage(imc/40)
+  
+      if(imc<18.5){
+          setColorNeed(etat[0].color)
+      }
+      else if(imc>=18.5 && imc<=25){
+        setColorNeed(etat[1].color)
+      }
+      else if(imc>25&& imc<=30){
+        setColorNeed(etat[2].color)
+      }
+      else if(imc>30 && imc<=35){
+        setColorNeed(etat[3].color)
+      }
+      else if(imc>35){
+        setColorNeed(etat[4].color)
+      }
     }
 
-  });
+  },[imcs]);
 
   const config = {
     percent: pourcentage,
