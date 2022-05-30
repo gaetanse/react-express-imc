@@ -49,34 +49,34 @@ export default function PieChart(props) {
         },
       },
       pieStyle: ({ etat }) => {
-        if (etat === 'm') {
-          return {
-            fill: 'p(a)https://www.irishnews.com/picturesarchive/irishnews/irishnews/2019/04/08/132023636-837d5e87-036c-489c-865a-84c20167b41f.jpg',
-            size :18,
-          };
-        }
-        if (etat === 'k') {
-          return {
-            fill: 'p(a)https://media.istockphoto.com/vectors/big-and-little-skulls-seamless-patern-vector-id1184543333?k=20&m=1184543333&s=612x612&w=0&h=2-E41OZ4jp3NZkCYdc6X8RAsOJ5cSf4q-LfjGv5n_5E=',
-            size :18,
-          };
-        }
-        if (etat === 'l') {
+        if (etat === 'maigreur') {
           return {
             fill: 'p(a)https://gift.kleecks-cdn.com/img/vari%C3%A9t%C3%A9s-d-eau-min%C3%A9rale/vari%C3%A9t%C3%A9s-d-eau-min%C3%A9rale.jpg',
             size :18,
           };
         }
-    
-        if (etat === 'o') {
+        if (etat === 'normal') {
           return {
             fill: 'p(a)https://img-3.journaldesfemmes.fr/HwUgYMFAXpGcR9A7Xrw4oF67Mf4=/1500x/smart/409e102e633d42759746f73e286431a3/ccmcms-jdf/11057068.jpg',
+            size :18,
+          };
+        }
+        if (etat === 'surpoids') {
+          return {
+            fill: 'p(a)https://www.peopleactmagazine.fr/wp-content/uploads/2022/04/Valerie-Damidot.jpeg',
+            size :18,
+          };
+        }
+    
+        if (etat === 'obesite') {
+          return {
+            fill: 'p(a)https://www.irishnews.com/picturesarchive/irishnews/irishnews/2019/04/08/132023636-837d5e87-036c-489c-865a-84c20167b41f.jpg',
             size : 18,
           };
         }
     
         return {
-          fill: 'p(a)https://upload.wikimedia.org/wikipedia/commons/4/44/Salade_laitue_%28SALVINA%291991_Cl_Jean_Weber_%2823594776891%29.jpg',
+          fill: 'p(a)https://media.istockphoto.com/vectors/big-and-little-skulls-seamless-patern-vector-id1184543333?k=20&m=1184543333&s=612x612&w=0&h=2-E41OZ4jp3NZkCYdc6X8RAsOJ5cSf4q-LfjGv5n_5E=',
           size : 18,
         };
       },

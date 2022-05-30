@@ -40,23 +40,23 @@ export const DemoPie = (_props) => {
       setData(
         [
           {
-            etat: 'm',
+            etat: 'maigreur',
             sold: compteur0local,
           },
           {
-            etat: 'k',
+            etat: 'normal',
             sold: compteur1local,
           },
           {
-            etat: 'l',
+            etat: 'surpoids',
             sold: compteur2local,
           },
           {
-            etat: 'o',
+            etat: 'obesite',
             sold: compteur3local,
           },
           {
-            etat: 's',
+            etat: 'morbide',
             sold: compteur4local,
           },
         ]
