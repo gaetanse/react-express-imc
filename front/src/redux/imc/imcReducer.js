@@ -1,7 +1,5 @@
 const INITIAL_STATE = {
-    imcs : [],
-    listePokemonsCaptures: [],
-    show: false
+    imcs : []
 }
 
 function ImcReducer (state = INITIAL_STATE, action) {

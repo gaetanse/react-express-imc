@@ -1,14 +1,7 @@
-// export default function ChartImcNow() {
-//  return (
-//    <div>ChartImcNow</div>
-//  )
-//}
-
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { Gauge } from '@ant-design/plots';
+import React, { useState, useEffect } from 'react'
+import { Gauge } from '@ant-design/plots'
 import etat from "./../../data/etat.json"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 export const DemoGauge = (_props) => {
 
@@ -18,15 +11,9 @@ export const DemoGauge = (_props) => {
   const imcs = useSelector(state=>state.imcs)
 
   useEffect(() => {
-
-    console.log(imcs)
-
     if(imcs.length!=0){
-
       let imc = imcs[imcs.length-1].imc
-  
       setPourcentage(imc/40)
-  
       if(imc<18.5){
           setColorNeed(etat[0].color)
       }
@@ -43,7 +30,6 @@ export const DemoGauge = (_props) => {
         setColorNeed(etat[4].color)
       }
     }
-
   },[imcs]);
 
   const config = {
@@ -51,7 +37,6 @@ export const DemoGauge = (_props) => {
     range: {
       width:20,
       ticks: [0.46, 0.62, 0.75, 0.87, 1],
-
       color: [etat[0].color, etat[1].color, etat[2].color, etat[3].color, etat[4].color]
     },
     indicator: {
@@ -84,14 +69,8 @@ export const DemoGauge = (_props) => {
         },
       },
     },
-  };
-  //Gauge.scale('value', {
-  //  min: 20,
-  //  max: 40,
-  //  tickInterval: 1,
-  //});
+  }
   return (
     <Gauge {...config}/>
-  );
-  
-};
+  )
+}

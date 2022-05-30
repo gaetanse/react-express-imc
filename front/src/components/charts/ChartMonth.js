@@ -1,64 +1,35 @@
-// export default function ChartMonth() {
-//  return (
-//    <div>ChartMonth</div>
-//  )
-//}
+import React, { useState, useEffect } from 'react'
+import { Pie } from '@ant-design/plots'
+import { useSelector } from "react-redux"
 
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { Pie } from '@ant-design/plots';
-import { useDispatch, useSelector } from "react-redux"
-
-export const DemoPie = (props) => {
-  
-  const [create,setCreate] = useState(false)
+export const DemoPie = (_props) => {
 
   const [compteur0, setCompteur0] = useState(0)
   const [compteur1, setCompteur1] = useState(0)
   const [compteur2, setCompteur2] = useState(0)
   const [compteur3, setCompteur3] = useState(0)
   const [compteur4, setCompteur4] = useState(0)
-
-  const [configInfos,setConfigInfos] = useState(undefined)
   
   const imcs = useSelector(state=>state.imcs)
 
   useEffect(() => {
-    console.log(props.imcs)
-
-    console.log("--------------------------------------------------------")
     for(let i=0; i<imcs.length; ++i){
-      //console.log(props.imcs[i].numero)
       if(imcs[i].numero==0){
-        console.log("0")
         setCompteur0(compteur0+1)
       }
       else if(imcs[i].numero==1){
-        console.log("1")
         setCompteur1(compteur1+1)
       }
       else if(imcs[i].numero==2){
-        console.log("2")
         setCompteur2(compteur2+1)
       }
       else if(imcs[i].numero==3){
-        console.log("3")
         setCompteur3(compteur3+1)
       }
       else if(imcs[i].numero==4){
-        console.log("4")
         setCompteur4(compteur4+1)
       }
     }
-    console.log("--------------------------------------------------------")
-
-    /*setConfigInfos(
-      config
-    )*/
-
-    //setCreate(true)
-
-
   },[imcs]);
 
   const data = [
@@ -85,7 +56,6 @@ export const DemoPie = (props) => {
   ]
 
 const config = {
-  
   appendPadding: 10,
   data,
   angleField: 'sold',
@@ -139,7 +109,6 @@ const config = {
       type: 'element-single-selected',
     },
   ],
-};
-
+}
   return <Pie {...config}/>
-};
+}

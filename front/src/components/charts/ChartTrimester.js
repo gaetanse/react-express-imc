@@ -1,23 +1,12 @@
-//export default function ChartTrimester() {
-//  return (
-//    <div>ChartTrimester</div>
-//  )
-//}
+import React, { useState, useEffect } from 'react'
+import { Line } from '@ant-design/plots'
+import { useSelector } from "react-redux"
 
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { Line } from '@ant-design/plots';
-
-import { useDispatch, useSelector } from "react-redux"
-
- 
-
-export const DemoLine = (props) => {
+export const DemoLine = (_props) => {
   const [data, setData] = useState([]);
   const imcs = useSelector(state=>state.imcs)
 
   useEffect(() => {
-    console.log(props.imcs)
     setData(imcs)
   }, [imcs]);
 
@@ -59,10 +48,9 @@ export const DemoLine = (props) => {
       },
     ],
   };
-
   return (
     <div style={{width: "1200px", margin: "20% auto"}}>
       <Line {...config} />
     </div>
-    );
-};
+    )
+}
