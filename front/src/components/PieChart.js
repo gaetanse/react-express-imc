@@ -9,29 +9,6 @@ export default function PieChart(props) {
     setData(props.data)
   },[props])
 
-    /*const data = 
-    [
-      {
-        etat: 'm',
-        sold: 0,
-      },
-      {
-        etat: 'k',
-        sold: 0,
-      },
-      {
-        etat: 'l',
-        sold: 0,
-      },
-      {
-        etat: 'o',
-        sold: 0,
-      },
-      {
-        etat: 's',
-        sold: 0,
-      },
-    ]*/
     const config = {
       appendPadding: 10,
       data,
@@ -63,7 +40,7 @@ export default function PieChart(props) {
         }
         if (etat === 'surpoids') {
           return {
-            fill: 'p(a)https://www.peopleactmagazine.fr/wp-content/uploads/2022/04/Valerie-Damidot.jpeg',
+            fill: 'p(a)https://assets.afcdn.com/recipe/20131024/6891_w1024h576c1cx1872cy2808.jpg',
             size :18,
           };
         }

@@ -1,8 +1,7 @@
 import './../styles/Menu.css'
 import { Button, Menu } from 'antd'
 import { DemoGauge }  from "./charts/ChartImcNow"
-import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
+import { useNavigate,Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 
 export default function SideBarNav(props) {

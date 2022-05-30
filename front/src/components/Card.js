@@ -1,12 +1,11 @@
 import "./../styles/Card.css"
-import { Card,Col,Row } from 'antd'
+import { Card,Col,Row,Progress } from 'antd'
 import { UserOutlined, CheckSquareOutlined, BarChartOutlined } from '@ant-design/icons'
-import { Progress } from 'antd'
 
 export default function CardIMC(props) {
   return (
     <Col span={6}>
-      <Card className="border" style={{margin: "10px 10px", height:"auto", width: "auto"}}>
+      <Card className="border" style={{margin: "10px 10px", height:"500px", width: "400px"}}>
         <p className="readable bold">IMC</p>
         <p className="big bold">{ parseInt((props.infos.imc)) }</p>
         <p className="bold">{new Date(props.todayDate).toDateString()}</p>

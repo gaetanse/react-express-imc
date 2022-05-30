@@ -34,16 +34,13 @@ function getImcs(){
 
 //get a user
 async function getUser(id){
-    console.log("test user")
     const users = await getUsers()
-    console.log("get user")
     return new Promise(resolve => {
         for(let i=0;i<users.length;++i){
             if(id == users[i].id){
                 resolve(users[i])
             }
         }
-        console.log(users)
     });
 }
 
@@ -73,11 +70,6 @@ async function addUser(name, password, age, height, weight){
 
 //add a imc
 async function addImc(imc, id, weight, date, numero){
-
-    console.log("----------------")
-    console.log(id)
-    console.log(imc)
-    console.log("----------------")
 
     const allData = await getImcs()
     const data = {
@@ -117,12 +109,7 @@ app.post('/addImc', async (req, res) => {
 
        const {weight, todayDate, id} = req.body
 
-       console.log("----------------")
-       console.log(id)
-       console.log("----------------")
-
        const user = await getUser(id)
-       console.log(user)
        const imc = weight/(user.height*user.height)
 
         let numero = 0
@@ -144,7 +131,6 @@ app.post('/addImc', async (req, res) => {
         }
 
        const error = await addImc(imc,id,weight,todayDate,numero)
-       console.log("add imc")
        if(error === 1){
         const allData = await getImcs()
         res.json({message: "ok - the imc is add",imc:allData[allData.length-1]})
@@ -191,30 +177,6 @@ app.post('/getImcs', async (req, res) => {
     }
 })
 
-//route for last imc by id
-app.post('/getImcLastImc', async (req, res) => {
-    const lastImc = undefined
-    let isFound = false
-    const {id} = req.body
-    const allData = await getImcs()
-
-    const imcsOfUser = []
-
-    allData.map((e)=>{
-        if(id === e.id){
-            imcsOfUser.push(e)
-            isFound = true
-        }
-    })
-
-    if(!isFound){
-        res.json({message: "none imc found"})
-    }
-    else{
-        res.json({message: "imc found",imc:imcsOfUser[imcsOfUser.length-1].imc})
-    }
-})
-
 app.listen(666,() => {
-    console.log("server open at 666")
+    console.log("Server open at 666")
 })
