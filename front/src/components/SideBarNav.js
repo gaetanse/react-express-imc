@@ -1,20 +1,13 @@
-import { BulbOutlined, CoffeeOutlined, UserOutlined, ChromeOutlined, WindowsOutlined, AndroidOutlined, ToolOutlined } from '@ant-design/icons';
+import './../styles/Menu.css'
 import { Button, Menu } from 'antd'
 import { DemoGauge }  from "./charts/ChartImcNow"
 import { useNavigate } from "react-router-dom"
-import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
-
-import './../styles/Menu.css'
-import { useDispatch, useSelector } from "react-redux"
-const axios = require('axios');
+import { useDispatch } from "react-redux"
 
 export default function SideBarNav(props) {
 
   const dispatch = useDispatch()
-  
-  const [imcFound, setImcFound] = useState(0)
-  const imcs = useSelector(state=>state.imcs)
 
   const navigate = useNavigate();
 
@@ -31,18 +24,6 @@ export default function SideBarNav(props) {
     })
     navigate("/")
   }
-  //useEffect(() => {
-    /*axios.post('http://localhost:666/getImcLastImc', {
-      id: localStorage.getItem('id')
-    })
-    .then(function (response) {
-      if(response.data.message === "imc found"){
-        setImcFound(response.data.imc)
-      }
-    })
-    .catch(function (error) { console.log(error) });*/
-  //  setImcFound(imcs[imcs.length-1].imc)
-  //},[imcs]);
 
   return (
     <div id="mySidenav" >

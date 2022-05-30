@@ -7,7 +7,8 @@ export const DemoLine = (_props) => {
   const imcs = useSelector(state=>state.imcs)
 
   useEffect(() => {
-    setData(imcs)
+    if(imcs.length!==0)
+      setData(imcs)
   }, [imcs]);
 
   const config = {

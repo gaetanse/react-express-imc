@@ -11,11 +11,11 @@ export const DemoGauge = (_props) => {
   const imcs = useSelector(state=>state.imcs)
 
   useEffect(() => {
-    if(imcs.length!=0){
+    if(imcs.length!==0){
       let imc = imcs[imcs.length-1].imc
       setPourcentage(imc/40)
       if(imc<18.5){
-          setColorNeed(etat[0].color)
+        setColorNeed(etat[0].color)
       }
       else if(imc>=18.5 && imc<=25){
         setColorNeed(etat[1].color)

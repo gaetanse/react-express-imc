@@ -1,7 +1,7 @@
-import { Form, Button, Input, Col, Row } from "antd";
-import "./../styles/Register.css";
-import {Link} from "react-router-dom";
-import { useState } from "react";
+import "./../styles/Register.css"
+import { Form, Button, Input } from "antd"
+import {Link} from "react-router-dom"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 const axios = require('axios');
@@ -26,7 +26,7 @@ const [weight,setWeight] = useState(undefined)
 
   function onValid(e){
     e.preventDefault()
-    if(name!=undefined&&password!=undefined&&age!=undefined&&height!=undefined&&weight!=undefined){
+    if(name!==undefined&&password!==undefined&&age!==undefined&&height!==undefined&&weight!==undefined){
       axios.post('http://localhost:666/addUser', {
         name: name,
         password: password,

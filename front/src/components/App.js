@@ -15,23 +15,22 @@ const axios = require('axios');
 
 function App() {
 
-  const dispatch = useDispatch()
   const imcs = useSelector(state=>state.imcs)
-
-  const fileEtat = "data/etat.json"
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log("qzdqzd")
     axios.post('http://localhost:666/getImcs', {
       id: localStorage.getItem('id')
     })
     .then(function (response) {
       if(response.data.message === "imc found"){
         response.data.imcs.map((e)=>{
-          dispatch({
-            type: "ADD-IMC",
-            payload: e
-          })
+          return(
+            dispatch({
+              type: "ADD-IMC",
+              payload: e
+            })
+          )
         })
       }
     })
@@ -54,7 +53,7 @@ function App() {
                 imcs !== undefined ?
                 imcs.map((e,i)=>{
                   let calculWithLast = 0
-                  if(i!=0){
+                  if(i!==0){
                     calculWithLast = imcs[i].weight - imcs[i-1].weight
                   }
                   return(

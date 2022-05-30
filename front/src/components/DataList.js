@@ -1,5 +1,5 @@
 export default function DataList() {
   return (
-    <div>DataList</div>
+    <div></div>
   )
 }

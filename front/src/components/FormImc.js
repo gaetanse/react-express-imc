@@ -1,20 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-} from 'antd';
-import { Navigate, useNavigate } from 'react-router-dom';
-import moment from 'moment';
-import { useDispatch, useSelector } from "react-redux"
-const axios = require('axios');
+import React, { useState, useEffect } from 'react'
+import { Form, Input, Button, Radio, DatePicker } from 'antd'
+import { useNavigate } from 'react-router-dom'
+import moment from 'moment'
+import { useDispatch } from "react-redux"
+const axios = require('axios')
 
 export default function FormImc() {
   
@@ -37,22 +26,14 @@ export default function FormImc() {
 
   function onValid(e){
     e.preventDefault()
-    console.log("----------------------")
-    console.log(todayDate)
-    console.log(weight)
-    console.log(localStorage.getItem('id'))
-    console.log("----------------------")
-    if(todayDate!=undefined&&weight!=undefined){
-      console.log(todayDate)
+    if(todayDate!==undefined&&weight!==undefined){
       axios.post('http://localhost:666/addImc', {
         weight: weight,
         todayDate: todayDate.toString(),
         id: localStorage.getItem('id')
       })
       .then(function (response) {
-        console.log(response.data.message)
         if(response.data.message === "ok - the imc is add"){
-          console.log("ok / imc add")
           dispatch({
             type: "ADD-IMC",
             payload: response.data.imc

@@ -3,57 +3,64 @@ import { Pie } from '@ant-design/plots'
 import { useSelector } from "react-redux"
 
 export const DemoPie = (_props) => {
-
-  const [compteur0, setCompteur0] = useState(0)
-  const [compteur1, setCompteur1] = useState(0)
-  const [compteur2, setCompteur2] = useState(0)
-  const [compteur3, setCompteur3] = useState(0)
-  const [compteur4, setCompteur4] = useState(0)
   
   const imcs = useSelector(state=>state.imcs)
 
   useEffect(() => {
-    for(let i=0; i<imcs.length; ++i){
-      if(imcs[i].numero==0){
-        setCompteur0(compteur0+1)
+
+    if(imcs.length!=0){
+
+      let compteur0local = 0
+      let compteur1local = 0
+      let compteur2local = 0
+      let compteur3local = 0
+      let compteur4local = 0
+
+      for(let i=0; i<imcs.length; ++i){
+        if(imcs[i].numero==0){
+          compteur0local++
+        }
+        else if(imcs[i].numero==1){
+          compteur1local++
+        }
+        else if(imcs[i].numero==2){
+          compteur2local++
+        }
+        else if(imcs[i].numero==3){
+          compteur3local++
+        }
+        else if(imcs[i].numero==4){
+          compteur4local++
+        }
       }
-      else if(imcs[i].numero==1){
-        setCompteur1(compteur1+1)
-      }
-      else if(imcs[i].numero==2){
-        setCompteur2(compteur2+1)
-      }
-      else if(imcs[i].numero==3){
-        setCompteur3(compteur3+1)
-      }
-      else if(imcs[i].numero==4){
-        setCompteur4(compteur4+1)
-      }
+
     }
+
   },[imcs]);
 
-  const data = [
-    {
-      etat: 'm',
-      sold: compteur0,
-    },
-    {
-      etat: 'k',
-      sold: compteur1,
-    },
-    {
-      etat: 'l',
-      sold: compteur2,
-    },
-    {
-      etat: 'o',
-      sold: compteur3,
-    },
-    {
-      etat: 's',
-      sold: compteur4,
-    },
-  ]
+const data = 
+[
+  {
+    etat: 'm',
+    sold: 0,
+  },
+  {
+    etat: 'k',
+    sold: 0,
+  },
+  {
+    etat: 'l',
+    sold: 0,
+  },
+  {
+    etat: 'o',
+    sold: 0,
+  },
+  {
+    etat: 's',
+    sold: 0,
+  },
+]
 
 const config = {
   appendPadding: 10,

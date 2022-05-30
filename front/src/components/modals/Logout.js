@@ -5,10 +5,6 @@ export default function Logout() {
   
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  }
-
   const handleOk = () => {
     setIsModalVisible(false);
   }
@@ -19,8 +15,6 @@ export default function Logout() {
 
   return (
     <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
       <p>Some contents...</p>
     </Modal>
   )

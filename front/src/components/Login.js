@@ -1,7 +1,7 @@
-import { Form,Button,Input,Row,Col } from "antd"
 import "./../styles/Login.css"
+import { Form,Button,Input } from "antd"
 import { Link } from "react-router-dom"
-import { useState,useEffect } from "react"
+import { useState } from "react"
 import LoginNotOk from "./modals/LoginNotOk"
 import LoginOk from "./modals/LoginOk"
 
@@ -28,7 +28,7 @@ export default function Login() {
 
   function onValid(e){
     e.preventDefault()
-    if(name!=undefined&&password!=undefined){
+    if(name!==undefined&&password!==undefined){
       axios.post('http://localhost:666/getUsers', {
         name: name,
         password: password
@@ -40,7 +40,6 @@ export default function Login() {
           setShowOk(true)
         }
         else{
-          console.log("user not found")
           setShowNotOk(true)
         }
       })
